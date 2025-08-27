@@ -7,8 +7,6 @@ const Banner = () => {
     <div className={styles.contenedor}>
       <CaruselPrincipal />
     </div>
-    <div>
-    </div>
     </>
   )
 }

@@ -17,6 +17,11 @@ const Producto = ({nombre, precio, imagen}:PropsProducto) => {
               alt="Producto"
               src={imagen}
             />
+            <img 
+              src="https://landinginteligente.com/fotos/CatalogoUsados/deconcesionarias--2023-6-14--15-28-41/31963200-a857-4f6d-a9c3-c7e5bd9f7b98.jpg" 
+              alt="" 
+              className={styles.imagen_hover}
+            />
         </div>
         <div className={styles.contenedor_informacion}>
           <div className={styles.contenedor_titulo}>

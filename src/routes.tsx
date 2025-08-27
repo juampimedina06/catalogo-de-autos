@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import NotFound from "./pages/NotFound";
-import PaginaBase from "./pages/PaginaBase";
+import PaginaBase from "./layout";
 import NuevoProducto from "./pages/NuevoProducto";
 import Stock from "./pages/Stock/Stock";
 import TerminosCondiciones from "./pages/TerminosCondiciones/TerminosCondiciones";

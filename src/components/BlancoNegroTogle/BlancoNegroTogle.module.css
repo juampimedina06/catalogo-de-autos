@@ -8,11 +8,10 @@
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: var(--bg-select, var(--color-claro));
+  background-color:var(-color-primary);
   color: var(--text-select, #333);
-  border: 2px solid var(--border-select, #ccc);
   border-radius: 8px;
-  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  padding: 0.2rem 2rem 0.2rem 1rem;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;

@@ -1,34 +1,45 @@
 .cabecera {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1.1em 6em;
+    gap: 1rem;
+    width: 100%;
     z-index: 100;
     position: sticky;
-    top: 30px;
     background-color: var(--color-claro);
-    border-bottom: 1px solid var(--color-primary);
+    top: 0.1px;
 }
 
-.logoContainer {
+.contenedor_links{
+    width: 80%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 10px;
 }
 
-.logoContainer img {
-    width: 30px;
+.lupa_logo_user {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
 }
 
+.contenedor_logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.logo {
+    height: 60px;
+    cursor: pointer;
+}
 
-
-.contenedor_texto p {
-    color: var(--color-primary);
-    font-weight: 650;
-    margin-bottom: -8px;
-    font-size: 14px;
-    text-transform: uppercase;
+.contenedor_admin{
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding: 1rem 0;
 }
 
 .nav {
@@ -87,7 +98,8 @@
 
 /* RESPONSIVE */
 @media (max-width: 520px) {
-    .cabecera {
+    .lupa_logo_user{
+        width: 100%;
         padding: 10px;
     }
 
@@ -101,8 +113,7 @@
     .nav_responsive_activo{
         flex-direction: column;
         position: absolute;
-        top: 65px;
-        left: -1px;
+        top: 77px;
         justify-content: center;
         align-items: center;
         width: 100%;

@@ -64,7 +64,7 @@ const Inicio = () => {
   return (
     <>
       <Banner />
-      <section className={styles.contenedor_buscador}>
+      {/* <section className={styles.contenedor_buscador}>
         <div className={styles.contenedor_titulo}>
           <Titulo titulo="¡Oportunidades únicas!" />
         </div>
@@ -82,9 +82,10 @@ const Inicio = () => {
             categorias={categorias}
           />
         </div>
-      </section>
+      </section> */}
 
       <section className={styles.contenedor_producto}>
+        <Titulo titulo="¡Oportunidades únicas!" />
         {categoriaSeleccionada.length === 0 ? null : (
           <Titulo titulo={categoriaSeleccionada} />
         )}
