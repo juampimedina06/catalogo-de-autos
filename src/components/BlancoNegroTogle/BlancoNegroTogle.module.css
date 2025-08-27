@@ -1,0 +1,34 @@
+.label {
+  display: inline-block;
+  position: relative;
+  font-size: 1rem;
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--bg-select, var(--color-claro));
+  color: var(--text-select, #333);
+  border: 2px solid var(--border-select, #ccc);
+  border-radius: 8px;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg fill='gray' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1rem;
+  
+}
+
+.select:hover {
+  border-color: var(--border-hover, #888);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--border-focus, #555);
+  box-shadow: 0 0 0 3px rgba(100, 100, 255, 0.3);
+}

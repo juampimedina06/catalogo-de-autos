@@ -1,0 +1,24 @@
+.referencia_titulo_productos{
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.contenedor_svg{
+    width: 500px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor_informacion_productos{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.titulos_productos{
+    font-weight: 600;
+    font-size: .8rem;
+}

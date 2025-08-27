@@ -1,0 +1,128 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem;
+  background-color: #f6f6f7;
+  width: 100%;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.imageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.image {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 300px;
+}
+
+.breadcrumbs {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1c1c1c;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #2c6e49;
+}
+
+.delivery {
+  font-size: 1rem;
+  color: #f57c00;
+  font-weight: 500;
+}
+
+.description {
+  font-size: 1rem;
+  color: #5c5c5c;
+  line-height: 1.6;
+}
+
+.actions {
+  margin-top: 1rem;
+}
+
+.whatsappBtn {
+  background-color: #25d366;
+  color: white;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.whatsappBtn:hover {
+  background-color: #1ebe5d;
+}
+
+@media (max-width: 768px) {
+  .productContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imageWrapper, .info {
+    width: 100%;
+  }
+
+  .gallery {
+    flex-direction: row;
+    justify-content: center;
+    max-height: none;
+    overflow-y: visible;
+    flex-wrap: wrap;
+  }
+}

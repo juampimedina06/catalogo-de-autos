@@ -1,0 +1,8 @@
+.loading {
+    background-color: var(--color-claro);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

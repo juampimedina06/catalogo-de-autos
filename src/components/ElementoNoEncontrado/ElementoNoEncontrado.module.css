@@ -1,0 +1,17 @@
+.contenedor_no_encontrado{
+    max-width: 100%;
+    min-width: 1000px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.parrafo_no_encontrado{
+    font-size: 1.2rem;
+    margin: 2rem 0;
+}
+
+.imagen_no_encontrado{
+    width: 200px;
+}

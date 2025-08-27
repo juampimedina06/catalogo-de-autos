@@ -1,0 +1,19 @@
+.contenedor_barra{
+    width: 90%;
+}
+
+.contenedor_productos{
+    min-height: 500px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 90%;
+    margin-bottom:1rem ;
+}
+
+
+
+
+
+

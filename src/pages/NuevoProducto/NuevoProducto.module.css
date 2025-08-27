@@ -1,0 +1,36 @@
+.contenedor{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-claro);
+    padding-bottom: 10px;
+    border-bottom:1px solid #ffffff52;
+}
+
+.contenedor h2{
+    margin: 1rem 0 1rem 0;
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 44px;
+}
+.contenedor p{
+    font-size: 20px;
+    color: var(--color-black);
+    margin-bottom:3rem ;
+}
+
+.contenedor_formulario{
+    display: flex;
+    justify-content: center;
+    width: 65%;
+}
+
+
+@media (max-width:600px){
+    .contenedor_formulario{
+        width: 100%;
+        padding: 0;
+    }
+}

@@ -1,0 +1,87 @@
+.formulario{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 0 0 2.5rem;
+}
+
+
+.input_stock{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    padding: 0 0 0 10px;
+    background-color: var(--color-primary);
+    color: var(--color-claro);
+    border-radius: 5px;
+}
+
+.input_producto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 0 0 10px;
+    background-color: var(--color-primary);
+    color: var(--color-claro);
+    border-radius: 5px;
+    height: 2.5rem;
+    width: 100%;
+}
+
+
+.contenedor_file{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input_file {
+    display: none;
+}
+
+.botonArchivo {
+    display: flex;
+    justify-content: center;
+    padding: 5px 0px;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+.nombreArchivo {
+    display: block;
+    margin-top: 8px;
+    color: #374151;
+    font-size: 0.9rem;
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+}
+
+
+
+.boton_formulario{
+    display: flex;
+    justify-content: center;
+    height: 1.8rem;
+    width: 2rem;
+    border-radius: 3px;
+    transition: .3s;
+    background-color: #2efd05c9;
+    svg{
+        width: 1.1rem;
+    }
+}
+
+.boton_formulario:hover{
+    background-color: #2efd0575;
+}

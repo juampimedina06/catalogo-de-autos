@@ -1,0 +1,16 @@
+.cabecera_superior{
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+}
+
+.ubicacion{
+    text-transform: uppercase;
+    color: var(--color-claro);
+    font-size: 11px;
+    padding: 7px 0;
+    font-weight: 800;
+}

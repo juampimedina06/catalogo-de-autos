@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color:var(--color-claro);
+}
+
+/* Para navegadores basados en Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 14px; /* Ancho de la barra de scroll */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--color-claro); /* Color del fondo (blanco) */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary); /* Color de la barra de desplazamiento (negro) */
+    border-radius: 3px; /* Bordes redondeados */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secundary); /* Color cuando se pasa el mouse (gris oscuro) */
+  }
+  

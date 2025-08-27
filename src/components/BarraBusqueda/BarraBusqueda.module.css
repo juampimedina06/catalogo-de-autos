@@ -1,0 +1,35 @@
+.contenedor_barra_buscadora {
+    margin: 1.6rem 0;
+    display: flex;
+    width: 100%;
+    height: 38px;
+    position: relative;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.lupa {
+    position: absolute;
+    width: 24px;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.barra_buscadora {
+    width: 100%;
+    height: 100%;
+    padding-left: 40px; /* Espacio para que el texto no tape la lupa */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: var(--color-claro);
+    color: var(--color-primary);
+}
+
+.barra_buscadora:focus{
+    border: 2px solid #ccc;
+}

@@ -1,0 +1,57 @@
+.contenedor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.contenedor_central{
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+
+}
+
+.titulo {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+  text-align: center;
+  font-weight: 700;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+    color: var(--color-primary);
+
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--color-tercero);
+}
+
+ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  color: var(--color-tercero);
+}
+
+li {
+  margin-bottom: 0.5rem;
+  color: var(--color-tercero);
+}
+
+strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
