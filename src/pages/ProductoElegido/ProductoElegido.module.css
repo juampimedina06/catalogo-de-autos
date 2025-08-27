@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   padding: 4rem 1rem;
-  background-color: #f6f6f7;
+  background-color: var( --color-claro);
   width: 100%;
 }
 
@@ -10,7 +10,8 @@
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  background-color: #fff;
+  background-color: var(--color-claro);
+  align-items: start;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   padding: 2rem;
   width: 100%;
@@ -27,11 +28,9 @@
 }
 
 .thumbnail {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: auto;
   object-fit: cover;
-  border: 1px solid #ccc;
-  border-radius: 4px;
   cursor: pointer;
 }
 
@@ -46,7 +45,6 @@
 .image {
   width: 100%;
   max-width: 600px;
-  border-radius: 8px;
   object-fit: contain;
 }
 
@@ -54,58 +52,56 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap:1rem;
   min-width: 300px;
 }
 
 .breadcrumbs {
-  font-size: 0.9rem;
-  color: #999;
+  font-size: 0.7rem;
+  color: var(--color-primary);
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #1c1c1c;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
 }
 
 .price {
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #2c6e49;
+  font-size: .8;
+  font-weight: 400;
+  color:var(--color-primary);
 }
 
-.delivery {
-  font-size: 1rem;
-  color: #f57c00;
-  font-weight: 500;
-}
 
 .description {
-  font-size: 1rem;
-  color: #5c5c5c;
-  line-height: 1.6;
+  color: #ffffff;
+  font-size:12px;
+  line-height:17.1432px
 }
 
 .actions {
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
 }
 
 .whatsappBtn {
-  background-color: #25d366;
-  color: white;
-  padding: 1rem 1.5rem;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid #25d366;
+  margin-bottom: 1rem;
+  padding: .5rem;
+  width: 170px;
+  color: #25d366;
   text-align: center;
-  font-size: 1rem;
+  font-size: .7rem;
   text-decoration: none;
   display: inline-block;
-  transition: background 0.3s ease;
+  transition: background 0.2s ease;
 }
 
 .whatsappBtn:hover {
-  background-color: #1ebe5d;
+  background-color: #ffffff;
 }
 
 @media (max-width: 768px) {
