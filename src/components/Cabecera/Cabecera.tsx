@@ -56,14 +56,17 @@ const Cabecera = () => {
 
       {/* NAV RESPONSIVE */}
       <nav className={menuAbierto ? styles.nav_responsive_activo : styles.nav_responsive}>
-        <CabeceraLink url='/' isActive={location.pathname === '/'} onClick={toggleMenu}>
+        <CabeceraLink url='/' isActive={location.pathname === '/'}>
           Inicio
         </CabeceraLink>
-        <CabeceraLink url='/Stock' isActive={location.pathname === '/Stock'} onClick={toggleMenu}>
+        <CabeceraLink url='/Autos' isActive={location.pathname === '/Autos'}>
           Autos
         </CabeceraLink>
-        <CabeceraLink url='/NuevoProducto' isActive={location.pathname === '/NuevoProducto'} onClick={toggleMenu}>
-          Subir Autos
+        <CabeceraLink url='/Stock' isActive={location.pathname === '/Stock'}>
+          stock autos
+        </CabeceraLink>
+        <CabeceraLink url='/NuevoProducto' isActive={location.pathname === '/NuevoProducto'}>
+          Subir Auto
         </CabeceraLink>
       </nav>
     </header>
