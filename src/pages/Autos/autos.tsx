@@ -67,7 +67,7 @@ const Autos = () => {
         </div>
         <div className={styles.contenedor_buscadores}>
           <BarraBusqueda
-            placeholder="Buscar producto"
+            placeholder="Ingrese aqui el nombre"
             name="filtrador"
             value={filtrador}
             onChange={handleChange}
