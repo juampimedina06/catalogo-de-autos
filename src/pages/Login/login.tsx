@@ -3,21 +3,21 @@ import styles from "./login.module.css";
 import { signInWithEmailAndPassword } from 'firebase/auth'; 
 import { FirebaseError } from 'firebase/app'; 
 import { auth } from '../../services/firebase-config'; 
+import { useAuth } from '../../context/AuthContext';
 
 const LoginForm: React.FC = () => { 
   const [email, setEmail] = useState<string>(''); 
   const [password, setPassword] = useState<string>(''); 
-  const [error, setError] = useState<string | null>(null); 
-
+  const [error, setError] = useState<string | null>(null);
+  const {user, logout} = useAuth();
+  console.log(user)
   const handleLogin = async (e: FormEvent) => { 
     e.preventDefault();
     setError(null); 
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-
       console.log('Usuario logueado con éxito!');
-     
       setEmail(''); 
       setPassword('');
     } catch (err: any) { 
@@ -71,6 +71,7 @@ const LoginForm: React.FC = () => {
         Iniciar Sesión
       </button>
       {error && <p className={styles.login_error}>{error}</p>}
+      {user ? (<p>Su registro fue exitoso</p>): (<>Complete los campos</>)}
     </form>
   );
 }

@@ -3,10 +3,12 @@ import styles from "./Cabecera.module.css";
 import { Link, useLocation } from "react-router-dom";
 import CabeceraLink from '../CabeceraLink/CabeceraLink';
 import BlancoNegroTema from '../BlancoNegroTogle/BlancoNegroTogle';
+import { useAuth } from '../../context/AuthContext';
 
 const Cabecera = () => {
   const location = useLocation();
   const [menuAbierto, setMenuAbierto] = useState<boolean>(false);
+  const { user, logout } = useAuth()
 
   const toggleMenu = () => {
     setMenuAbierto(!menuAbierto);
@@ -35,19 +37,34 @@ const Cabecera = () => {
 
       {/* NAV DESKTOP */}
       <nav className={styles.nav}>
-        <CabeceraLink url='/' isActive={location.pathname === '/'}>
-          Inicio
-        </CabeceraLink>
-        <CabeceraLink url='/Autos' isActive={location.pathname === '/Autos'}>
-          Autos
-        </CabeceraLink>
-        <CabeceraLink url='/Stock' isActive={location.pathname === '/Stock'}>
-          stock autos
-        </CabeceraLink>
-        <CabeceraLink url='/NuevoProducto' isActive={location.pathname === '/NuevoProducto'}>
-          Subir Auto
-        </CabeceraLink>
         
+        {user ? (
+          <>
+            <CabeceraLink url='/' isActive={location.pathname === '/'}>
+              Inicio
+            </CabeceraLink>
+            <CabeceraLink url='/Autos' isActive={location.pathname === '/Autos'}>
+              Autos
+            </CabeceraLink>
+            <CabeceraLink url='/Stock' isActive={location.pathname === '/Stock'}>
+              stock autos
+            </CabeceraLink>
+            <CabeceraLink url='/NuevoProducto' isActive={location.pathname === '/NuevoProducto'}>
+              Subir Auto
+            </CabeceraLink>
+          </>
+          ) : (
+            <>
+            <CabeceraLink url='/' isActive={location.pathname === '/'}>
+              Inicio
+            </CabeceraLink>
+            <CabeceraLink url='/Autos' isActive={location.pathname === '/Autos'}>
+              Autos
+            </CabeceraLink>
+            
+            </>
+          )}
+
       </nav>
       </div>
 
