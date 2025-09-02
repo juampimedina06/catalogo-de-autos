@@ -2,54 +2,76 @@ import FormularioNuevoProducto from "../../components/FormularioNuevoProducto/Fo
 import styles from "./NuevoProducto.module.css";
 import servicioProductos from "../../services/productos"
 import { useForm } from "../../hooks/useForm";
+import { auth } from "../../services/firebase-config";
 
-interface FormData{
-    nombreProducto:string;
-    precioProducto:number;
-    fechaProducto:string;
-    codigoProducto:string;
-    descripcionProducto:string
-    categoriaProducto:string;
-    cantidadProducto:number;
-    imagenPrincipal:string;
+
+interface FormAuto{
+    nombre:string;
+    titulo:string;
+    categoria:string;
+    precio:number;
+    modelo:number;
+    kilometros:number;
+    motor:string;
+    version:string;
+    combustible:string;
+    equipamiento:string;
+    descripcion:string;
+    imagenes:[];
+    datos_externos:[];
+    cubiertas:boolean;
+    caja:string;
 }
 
 const NuevoProducto = () => {
 
-  const {handleChange, nombreProducto, precioProducto,fechaProducto,codigoProducto,descripcionProducto,categoriaProducto,cantidadProducto,imagenPrincipal} = useForm<FormData>({
-    nombreProducto:"",
-    precioProducto:0,
-    fechaProducto:"",
-    codigoProducto:"",
-    descripcionProducto:"",
-    categoriaProducto:"",
-    cantidadProducto:0,
-    imagenPrincipal:""
+  const {handleChange, nombre, titulo, categoria, precio, modelo, kilometros, motor, version, combustible, equipamiento, descripcion, imagenes, datos_externos, cubiertas, caja} = useForm<FormAuto>({
+    nombre:"",
+    titulo:"",
+    categoria:"",
+    precio:0,
+    modelo:0,
+    kilometros:0,
+    motor:"",
+    version:"",
+    combustible:"",
+    equipamiento:"",
+    descripcion:"",
+    imagenes:[],
+    datos_externos:[],
+    cubiertas:true,
+    caja:""
   })
 
   const subirProducto = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const nuevoProducto = {
-      nombre: nombreProducto,
-      precio: precioProducto,
-      fecha: fechaProducto,
-      codigo: codigoProducto,
-      descripcion: descripcionProducto,
-      categoria: categoriaProducto,
-      cantidad: cantidadProducto,
-      imagen: imagenPrincipal
+    const nuevoAuto = {
+      nombre: nombre,
+      titulo: titulo,
+      categoria: categoria,
+      precio: precio,
+      modelo: modelo,
+      kilometros: kilometros,
+      motor: motor,
+      version: version,
+      combustible: combustible,
+      equipamiento: equipamiento,
+      descripcion: descripcion,
+      imagenes: imagenes,
+      datos_externos: datos_externos,
+      cubiertas: cubiertas,
+      caja: caja
     }
 
-    servicioProductos
-      .crear(nuevoProducto)
-      .then((respuesta)=>{
-        console.log("producto subido con exito", respuesta)
-        //Usar componente de notificacion.
-        window.location.href = "/";
-      })
-      .catch((error)=>{
-        console.log("error al subir el producto", error)
-      })
+servicioProductos
+  .crear(nuevoAuto)
+  .then((respuesta) => {
+    console.log("producto subido con exito", respuesta);
+    window.location.href = "/";
+  })
+  .catch((error) => {
+    console.log("error al subir el producto", error);
+  });
   }
 
   return (
@@ -59,14 +81,21 @@ const NuevoProducto = () => {
           <FormularioNuevoProducto 
             onSubmit={subirProducto}
             onChange={handleChange}
-            nameNombre="nombreProducto" valueNombre={nombreProducto}
-            namePrecio="precioProducto" valuePrecio={precioProducto}
-            nameFecha="fechaProducto" valueFecha={fechaProducto}
-            nameCodigo="codigoProducto" valueCodigo={codigoProducto}
-            nameDescripcion="descripcionProducto" valueDescripcion={descripcionProducto}
-            nameCategoria="categoriaProducto" valueCategoria={categoriaProducto}
-            nameCantidad="cantidadProducto" valueCantidad={cantidadProducto}
-            nameImagenPrincipal="imagenPrincipal" valueImagenPrincipal={imagenPrincipal}
+            nombre={nombre}
+            titulo={titulo}
+            categoria={categoria}
+            precio={precio}
+            modelo={modelo}
+            kilometros={kilometros}
+            motor={motor}
+            version={version}
+            combustible={combustible}
+            equipamiento={equipamiento}
+            descripcion={descripcion}
+            imagenes={imagenes.join(",")}
+            datos_externos={datos_externos.join(",")}
+            cubiertas={cubiertas}
+            caja={caja}
           />
         </div>
     </section>
