@@ -25,6 +25,13 @@
     position: relative;
 }
 
+.contenedor_busqueda{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
 .contenedor_logo {
     position: absolute;
     left: 50%;
@@ -106,17 +113,17 @@
     .nav {
         display: none;
     }
-
+    
     .menuIcon {
         display: block !important;
     }
     .nav_responsive_activo{
         flex-direction: column;
         position: absolute;
-        top: 77px;
+        top: 100px;
         justify-content: center;
         align-items: center;
         width: 100%;
-        background-color: var(--color-claro);
+        background-color: rgba(0, 0, 0, 0.801);
     }
 }

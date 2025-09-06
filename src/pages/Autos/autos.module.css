@@ -1,3 +1,15 @@
+.contenedor_buscador{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor_buscadores{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .contenedor_producto {
   display: flex;
   margin-bottom: 4rem;
@@ -10,7 +22,7 @@
 
 .producto {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
@@ -28,10 +40,13 @@
 
 
 @media (max-width: 558px) {
+  .contenedor_buscador{
+    width: 95%;
+  }
   .contenedor_producto{
-    width: 100%;
+    width: 95%;
   }
   .producto {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:2;
   }
 }

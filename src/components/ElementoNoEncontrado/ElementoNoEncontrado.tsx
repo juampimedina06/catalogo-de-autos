@@ -7,7 +7,7 @@ interface PropTipoDato{
 const ElementoNoEncontrado = ({tipoDato}: PropTipoDato) => {
   return (
     <div className={styles.contenedor_no_encontrado}>
-        <p className={styles.parrafo_no_encontrado}>No se encontro producto con ese {tipoDato}</p>
+        <p className={styles.parrafo_no_encontrado}>No se encontro Auto con ese {tipoDato}</p>
         <img className={styles.imagen_no_encontrado} src="/img/elemento_no_encontrado.png" alt="" />
     </div>
   )
