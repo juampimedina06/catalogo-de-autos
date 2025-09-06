@@ -20,8 +20,8 @@ onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   combustible: string;
   equipamiento: string;
   descripcion: string;
-  imagenes: string;
-  datos_externos: string;
+  imagenes: string[];
+  datos_externos: string[];
   cubiertas: boolean;
   caja: string;
 }
@@ -202,13 +202,13 @@ useEffect(() => {
         {/* Imágenes */}
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Imágenes</label>
-          <InputStock
+          <input
             name="imagenes"
-            value={imagenes}
             onChange={onChange}
-            type="text"
-            placeholder="URL de imágenes (separadas por coma)"
-            clase="producto"
+            type="file"
+            multiple
+            accept="image/*"
+            
           />
         </div>
 

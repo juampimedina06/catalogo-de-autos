@@ -11,8 +11,8 @@ export  interface ProductoType {
   combustible:string;
   equipamiento:string;
   descripcion:string;
-  imagenes:[];
-  datos_externos:[];
+  imagenes:string[];
+  datos_externos:string[];
   cubiertas:boolean;
 caja:string;
 }
