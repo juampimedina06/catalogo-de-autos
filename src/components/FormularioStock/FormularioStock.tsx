@@ -37,25 +37,11 @@ const FormularioStock = ({
 
   return (
     <form className={styles.formulario} onSubmit={onSubmit}>
-      <InputStock
-        name={nameCodigo}
-        value={valueCodigo}
-        onChange={onChange}
-        type="text"
-        clase="stock"
-      />
       <InputStock 
         name={nameNombre}
         value={valueNombre}
         onChange={onChange}
         type="text"
-        clase="stock"
-      />
-      <InputStock 
-        name={nameCantidad}
-        value={valueCantidad}
-        onChange={onChange}
-        type="number"
         clase="stock"
       />
       <InputCategoria 

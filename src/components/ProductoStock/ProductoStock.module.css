@@ -1,40 +1,56 @@
+.producto{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .barra_producto{
-    background-color: rgba(145, 145, 145, 0.067);
     height: 3.5rem;
     align-items: center;
     display: flex;
-    border-top: 1px solid #0000001e;
-    width: 100%;
+    border-top: 1px solid #ffffff1e;
+}
+
+.contenedor_inputs_producto{
+    width: 90%;
 }
 
 .contenedor_svg{
-    width: 500px;
     height: auto;
     display: flex;
     justify-content: center;
+    width: 5%;
 }
 
 .svg_producto{
     width: 2rem;
-    }
+}
 
-.contenedor_informacion_productos{
+.contenedor_informacion{
     width: 100%;
+    height: auto;
+    padding: 1rem 0;
     display: flex;
-    justify-content: center;
+    gap: 1rem;
+}
+
+.contenido_informacion_productos{    
+    width: 100%;
 }
 
 .informacion_producto {
+    display: flex;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 180px;
+    width: 300px;
+    justify-content: center;
 }
 
 .contenedor_boton_productos{
-    width: 100%;
+    width: 10%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .boton_eliminar{
@@ -54,7 +70,6 @@
 .boton_eliminar{
     display: flex;
     justify-content: center;
-    margin-right: 2rem;
     width: 2rem;
     height: 1.8rem;
     border-radius: 3px;
