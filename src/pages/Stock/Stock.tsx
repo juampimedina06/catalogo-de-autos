@@ -34,7 +34,7 @@ const Stock = () => {
   })
 
   const filtrarProductos = producto.filter(producto =>
-    producto.codigo.toLowerCase().includes(filtrador.toLowerCase()))
+    producto.nombre.toLowerCase().includes(filtrador.toLowerCase()))
 
   if (loading){
     return <CirculoCargar />
