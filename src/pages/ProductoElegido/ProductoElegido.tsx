@@ -14,67 +14,48 @@ import 'swiper/css/free-mode';
 import { FreeMode, Pagination } from 'swiper/modules';
 import Producto from "../../components/Producto/Producto";
 
-interface ProductoElegido {
-  id:number;
-  nombre:string;
-  titulo:string;
-  categoria:string;
-  precio:number;
-  modelo:number;
-  kilometros:number;
-  motor:string;
-  version:string;
-  combustible:string;
-  equipamiento:string;
-  descripcion:string;
-  imagenes:[];
-  datos_externos:[];
-  cubiertas:boolean;
-  caja:string;
-}
-
-
-
 const ProductoElegido = () => {
-  const {id} = useParams<string>();
-  const [todosLosProductos, setTodosLosProductos] = useState<ProductoType[]>([])
+  const { id } = useParams<{ id: string }>();
+  const [todosLosProductos, setTodosLosProductos] = useState<ProductoType[]>([]);
   const [productosCategoria, setProductosCategoria] = useState<ProductoType[]>([]);
-  const [productoElegido, setProductoElegido] = useState<ProductoElegido | null>(null);
+  const [productoElegido, setProductoElegido] = useState<ProductoType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`https://67c6be3c351c081993fe9984.mockapi.io/productos/producto/${id}`)
-      .then((res) => res.json())
-      .then((data : ProductoElegido ) => {
-        setProductoElegido(data);
-        setLoading(false);
-      });
+    const fetchProducto = async () => {
+      if (!id) return;
+      setLoading(true);
 
-      ServicioProducto
-      .obtener()
-      .then((response : ProductoType[]) => {
-        setTodosLosProductos(response)
-      })
+      // 🔹 Traer producto por ID desde Firestore
+      const data = await ServicioProducto.obtenerPorId(id);
+      setProductoElegido(data);
+
+      // 🔹 Traer todos para sugerencias
+      const response = await ServicioProducto.obtener();
+      setTodosLosProductos(response);
+
+      setLoading(false);
+    };
+
+    fetchProducto();
   }, [id]);
 
   useEffect(() => {
     if (productoElegido && todosLosProductos.length > 0) {
       const autosCategoria = todosLosProductos.filter(
-        (auto) => auto.categoria === productoElegido.categoria
+        (auto) => auto.categoria === productoElegido.categoria && auto.id !== productoElegido.id
       );
       setProductosCategoria(autosCategoria);
-      console.log("Filtrados:", autosCategoria);
     }
   }, [productoElegido, todosLosProductos]);
-
 
   if (loading || !productoElegido) return <CirculoCargar />;
 
   const estadoCubiertas = () => {
-    if(productoElegido.cubiertas = true){
-      return <p className={styles.description}>4 cubiertas nuevas</p>
+    if (productoElegido.cubiertas) {
+      return <p className={styles.description}>4 cubiertas nuevas</p>;
     }
-  }
+  };
   const mensajeWsp = `Hola! Quiero encargar el producto: ${productoElegido.nombre}`;
   const linkWsp = `https://wa.me/543516598216?text=${encodeURIComponent(mensajeWsp)}`;
 
