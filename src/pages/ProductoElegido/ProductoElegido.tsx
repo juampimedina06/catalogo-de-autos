@@ -16,16 +16,24 @@ import Producto from "../../components/Producto/Producto";
 
 interface ProductoElegido {
   id:number;
-  nombre: string;
-  imagen: string;
-  imagen_one: string;
-  imagen_two: string;
-  imagen_three: string;
-  imagen_four: string;
-  descripcion: string;
-  categoria: string;
-  precio: string;
+  nombre:string;
+  titulo:string;
+  categoria:string;
+  precio:number;
+  modelo:number;
+  kilometros:number;
+  motor:string;
+  version:string;
+  combustible:string;
+  equipamiento:string;
+  descripcion:string;
+  imagenes:[];
+  datos_externos:[];
+  cubiertas:boolean;
+  caja:string;
 }
+
+
 
 const ProductoElegido = () => {
   const {id} = useParams<string>();
@@ -63,7 +71,11 @@ const ProductoElegido = () => {
 
   if (loading || !productoElegido) return <CirculoCargar />;
 
-
+  const estadoCubiertas = () => {
+    if(productoElegido.cubiertas = true){
+      return <p className={styles.description}>4 cubiertas nuevas</p>
+    }
+  }
   const mensajeWsp = `Hola! Quiero encargar el producto: ${productoElegido.nombre}`;
   const linkWsp = `https://wa.me/543516598216?text=${encodeURIComponent(mensajeWsp)}`;
 
@@ -94,7 +106,7 @@ const ProductoElegido = () => {
         </div>
         <div className={styles.imageWrapper}>
           <img
-            src={productoElegido.imagen}
+            src={productoElegido.imagenes[0]}
             alt={productoElegido.nombre}
             className={styles.image}
           />
@@ -103,7 +115,7 @@ const ProductoElegido = () => {
           <p className={styles.breadcrumbs}>Inicio &gt; Categoría &gt; {productoElegido.categoria}</p>
           
           <div>
-            <h1 className={styles.title}>{productoElegido.nombre}</h1>
+            <h1 className={styles.title}>{productoElegido.titulo}</h1>
             <p className={styles.price}>${productoElegido.precio}</p>
           </div>
           <a
@@ -115,13 +127,13 @@ const ProductoElegido = () => {
               Consultar por WhatsApp
             </a>
           <div className={styles.actions}>
-            <p className={styles.description}>Ford Focus modelo 2018. 103.000 kilometros</p>
-            <p className={styles.description}>Motor 2.0 Narta</p>
-            <p className={styles.description}>Version: Se plus</p>
-            <p className={styles.description}>Caja manual</p> 
-            <p className={styles.description}>4 cubiertas nuevas</p>
+            <p className={styles.description}>{productoElegido.nombre} modelo {productoElegido.modelo}. {productoElegido.kilometros} kilometros</p>
+            <p className={styles.description}>Motor {productoElegido.motor} {productoElegido.combustible}</p>
+            <p className={styles.description}>Version: {productoElegido.version}</p>
+            <p className={styles.description}>Caja {productoElegido.caja}</p> 
+            {estadoCubiertas()}
           </div>
-          <p className={styles.description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quod id! Eaque voluptate aliquid fugit, tenetur maiores magnam eius iusto, at ullam dolorem corrupti repellat molestiae nulla quaerat nobis. Distinctio.</p>
+          <p className={styles.description}>{productoElegido.descripcion}</p>
         </div>
       </div>
       <div className={styles.contenedor_otros_autos}>

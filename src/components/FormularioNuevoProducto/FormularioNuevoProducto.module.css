@@ -8,6 +8,7 @@
 
 .contenedor_inputs{
   display: flex;
+  flex-direction: column;
   width: 100%;
   gap: 1rem;
 }

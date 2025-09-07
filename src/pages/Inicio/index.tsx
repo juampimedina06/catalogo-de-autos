@@ -17,7 +17,7 @@ const Inicio = () => {
     servicioProducto
       .obtener()
       .then((response: ProductoType[]) => {
-        setProducto(response);
+        setProducto(response.slice(0, 9));
         setLoading(false);
       });
   }, []);
@@ -28,9 +28,13 @@ const Inicio = () => {
 
   return (
     <>
+    {/* <div className={styles.contenedor_bienvenida}>
+          <h2 className={styles.titulo_bienvenida}>Bienvenidos a A86</h2>
+          <p className={styles.parrafo_bienvenida}>Te acompañamos en cada paso para que elijas tu próximo auto con confianza, respaldo y tranquilidad. Trabajamos con los principales bancos y ofrecemos asesoramiento personalizado. ¡Estamos para ayudarte!</p>
+        </div> */}
       <Banner />
       <section className={styles.contenedor_producto}>
-        <Titulo titulo="¡Oportunidades únicas!" />
+        <Titulo titulo="Oportunidades únicas!" />
         <div className={styles.producto}>
           {producto.length === 0 ? (
             <ElementoNoEncontrado tipoDato="Nombre" />
@@ -43,6 +47,7 @@ const Inicio = () => {
           )}
         </div>
       </section>
+      
     </>
   );
 };
