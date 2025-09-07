@@ -56,7 +56,7 @@ const ProductoElegido = () => {
       return <p className={styles.description}>4 cubiertas nuevas</p>;
     }
   };
-  const mensajeWsp = `Hola! Quiero encargar el producto: ${productoElegido.nombre}`;
+  const mensajeWsp = `Hola! Quiero encargar el auto: ${productoElegido.nombre}`;
   const linkWsp = `https://wa.me/543516598216?text=${encodeURIComponent(mensajeWsp)}`;
 
   return (
@@ -64,22 +64,22 @@ const ProductoElegido = () => {
       <div className={styles.productContainer}>
         <div className={styles.gallery}>
           <img
-            src="https://landinginteligente.com/fotos/CatalogoUsados/deconcesionarias--2023-6-14--15-28-41/31963200-a857-4f6d-a9c3-c7e5bd9f7b98.jpg"
+            src={productoElegido.imagenes[1]}
             alt="Vista 1"
             className={styles.thumbnail}
           />
           <img
-            src="https://landinginteligente.com/fotos/CatalogoUsados/deconcesionarias--2023-6-14--15-28-41/31963200-a857-4f6d-a9c3-c7e5bd9f7b98.jpg"
+            src={productoElegido.imagenes[2]}
             alt="Vista 2"
             className={styles.thumbnail}
           />
           <img
-            src="https://landinginteligente.com/fotos/CatalogoUsados/deconcesionarias--2023-6-14--15-28-41/31963200-a857-4f6d-a9c3-c7e5bd9f7b98.jpg"
+            src={productoElegido.imagenes[3]}
             alt="Vista 3"
             className={styles.thumbnail}
           />
           <img
-            src="https://landinginteligente.com/fotos/CatalogoUsados/deconcesionarias--2023-6-14--15-28-41/31963200-a857-4f6d-a9c3-c7e5bd9f7b98.jpg"
+            src={productoElegido.imagenes[4]}
             alt="Vista 4"
             className={styles.thumbnail}
           />
@@ -95,7 +95,7 @@ const ProductoElegido = () => {
           <p className={styles.breadcrumbs}>Inicio &gt; Categoría &gt; {productoElegido.categoria}</p>
           
           <div>
-            <h1 className={styles.title}>{productoElegido.titulo}</h1>
+            <h1 className={styles.title}>{productoElegido.nombre}</h1>
             <p className={styles.price}>${productoElegido.precio}</p>
           </div>
           <a
@@ -110,7 +110,7 @@ const ProductoElegido = () => {
             <p className={styles.description}>{productoElegido.nombre} modelo {productoElegido.modelo}. {productoElegido.kilometros} kilometros</p>
             <p className={styles.description}>Motor {productoElegido.motor} {productoElegido.combustible}</p>
             <p className={styles.description}>Version: {productoElegido.version}</p>
-            <p className={styles.description}>Caja {productoElegido.caja}</p> 
+            <p className={styles.description}>{productoElegido.caja}</p> 
             {estadoCubiertas()}
           </div>
           <p className={styles.description}>{productoElegido.descripcion}</p>

@@ -21,7 +21,7 @@ interface PropsProductoStock {
 }
 
 const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProductoEstado, mensajeNotificacion, tipoNotificacion } : PropsProductoStock ) => {
-  const [editar, setEditar] = useState<number | null>(null);
+  const [editar, setEditar] = useState<string | undefined>(undefined);
 
   const editarProducto = (producto: ProductoType) => {
   setEditar(producto.id)
@@ -53,7 +53,7 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
         return
       }
       servicioProducto
-      .actualizar(editar!, objetoProducto)
+      .editar(editar!, objetoProducto)
       .then(() => {
       actualizarProductoEstado((productosAnteriores) =>
         productosAnteriores.map((producto) =>
@@ -62,7 +62,7 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
       );
       mensajeNotificacion("correcta")  
       tipoNotificacion("Producto actualizado correctamente")
-      setEditar(null)
+      setEditar(undefined)
       setTimeout(() => {
                 mensajeNotificacion('')
                 tipoNotificacion(null)
@@ -79,7 +79,7 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
       });
   }
 
-  const eliminarProducto = (id : number) => {
+  const eliminarProducto = (id : string) => {
       if (window.confirm('¿Seguro que querés eliminar el producto?')) {
         servicioProducto
         .eliminar(id)

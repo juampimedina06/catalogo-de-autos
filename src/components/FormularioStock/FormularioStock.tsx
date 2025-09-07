@@ -7,9 +7,7 @@ import InputCategoria from "../InputCategoria/InputCategoria"
 interface PropsFormularioStock{
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  nameCodigo:string; valueCodigo:string;
   nameNombre:string; valueNombre:string;
-  nameCantidad:string; valueCantidad:number;
   nameCategoria:string; valueCategoria:string;
   namePrecio:string; valuePrecio:number;
 }
@@ -17,9 +15,7 @@ interface PropsFormularioStock{
 const FormularioStock = ({
     onSubmit, 
     onChange,
-    nameCodigo,valueCodigo,
     nameNombre,valueNombre,
-    nameCantidad,valueCantidad,
     nameCategoria, valueCategoria,
     namePrecio,valuePrecio
 } : PropsFormularioStock) => {

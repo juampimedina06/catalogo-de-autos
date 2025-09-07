@@ -44,7 +44,7 @@ const Stock = () => {
     <>
     <header className={styles.contenedor_barra}>
       <BarraBusqueda
-        placeholder='Introduzca el Nombre del Auto' 
+        placeholder='Introduzca el nombre de auto que quiere buscar...' 
         value={filtrador}
         onChange={handleChange}
         name='filtrador'
