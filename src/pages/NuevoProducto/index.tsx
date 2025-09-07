@@ -93,7 +93,7 @@ const NuevoProducto = () => {
 
   return (
     <section className={styles.contenedor}>
-      <h2>Subir Producto</h2>
+      <h2>Subir Auto</h2>
       <div className={styles.contenedor_formulario}>
         <FormularioNuevoProducto
           onSubmit={subirProducto}

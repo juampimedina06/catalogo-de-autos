@@ -4,10 +4,11 @@ import { CardActionArea} from '@mui/material';
 interface PropsProducto{
   nombre:string;
   precio:number;
-  imagen?:string;
+  imagenes:string[];
 }
 
-const Producto = ({nombre, precio, imagen}:PropsProducto) => {
+
+const Producto = ({nombre, precio, imagenes}:PropsProducto) => {
   return (
       <div className={styles.producto}>
         <CardActionArea>
@@ -15,10 +16,10 @@ const Producto = ({nombre, precio, imagen}:PropsProducto) => {
             <img
               className={styles.imagen}
               alt="Producto"
-              src={imagen}
+              src={imagenes[0]}
             />
             <img 
-              src="https://landinginteligente.com/fotos/CatalogoUsados/deconcesionarias--2023-6-14--15-28-41/31963200-a857-4f6d-a9c3-c7e5bd9f7b98.jpg" 
+              src={imagenes[1]} 
               alt="" 
               className={styles.imagen_hover}
             />

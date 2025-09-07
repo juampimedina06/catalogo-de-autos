@@ -45,19 +45,12 @@ const FormularioNuevoProducto = ({
   cubiertas,
   caja,
 }: PropsFormularioNuevoProducto) => {
-  const [categorias, setCategorias] = useState<string[]>([categoria]);
 
-useEffect(() => {
-  servicioProductos.obtener().then(response => {
-    const categoriasUnicas = [...new Set(response.map(p => p.categoria))];
-    setCategorias(categoriasUnicas);
-  });
-}, []);
 
   return (
     <form className={styles.formulario} onSubmit={onSubmit}>
       <div className={styles.contenedor_inputs}>
-        {/* Nombre */}
+
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Nombre del Auto</label>
           <InputStock
@@ -69,8 +62,6 @@ useEffect(() => {
             clase="producto"
           />
         </div>
-
-        {/* Título */}
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Título</label>
           <InputStock
@@ -82,20 +73,18 @@ useEffect(() => {
             clase="producto"
           />
         </div>
+      </div>
 
-        {/* Categoría */}
+      <div className={styles.contenedor_inputs}>
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Categoría</label>
           <InputCategoria
             name="categoria"
             value={categoria}
             handleChange={onChange}
-            categorias={categorias}
             clase="producto"
           />
         </div>
-
-        {/* Precio */}
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Precio</label>
           <InputStock
@@ -107,8 +96,9 @@ useEffect(() => {
             clase="producto"
           />
         </div>
+      </div>
 
-        {/* Modelo */}
+      <div className={styles.contenedor_inputs}>
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Modelo</label>
           <InputStock
@@ -120,8 +110,6 @@ useEffect(() => {
             clase="producto"
           />
         </div>
-
-        {/* Kilómetros */}
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Kilómetros</label>
           <InputStock
@@ -133,8 +121,9 @@ useEffect(() => {
             clase="producto"
           />
         </div>
+      </div>
 
-        {/* Motor */}
+      <div className={styles.contenedor_inputs}>
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Motor</label>
           <InputStock
@@ -146,8 +135,6 @@ useEffect(() => {
             clase="producto"
           />
         </div>
-
-        {/* Versión */}
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Versión</label>
           <InputStock
@@ -159,8 +146,9 @@ useEffect(() => {
             clase="producto"
           />
         </div>
+      </div>
 
-        {/* Combustible */}
+      <div className={styles.contenedor_inputs}>
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Combustible</label>
           <InputStock
@@ -172,8 +160,6 @@ useEffect(() => {
             clase="producto"
           />
         </div>
-
-        {/* Equipamiento */}
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Equipamiento</label>
           <InputStock
@@ -185,34 +171,10 @@ useEffect(() => {
             clase="producto"
           />
         </div>
+      </div>
 
-        {/* Descripción */}
-        <div className={styles.contenedor_input}>
-          <label className={styles.label}>Descripción</label>
-          <InputStock
-            name="descripcion"
-            value={descripcion}
-            onChange={onChange}
-            type="text"
-            placeholder="Descripción"
-            clase="producto"
-          />
-        </div>
-
-        {/* Imágenes */}
-        <div className={styles.contenedor_input}>
-          <label className={styles.label}>Imágenes</label>
-          <input
-            name="imagenes"
-            onChange={onChange}
-            type="file"
-            multiple
-            accept="image/*"
-            
-          />
-        </div>
-
-        {/* Datos externos */}
+        
+      <div className={styles.contenedor_inputs}>
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Datos externos</label>
           <InputStock
@@ -224,19 +186,6 @@ useEffect(() => {
             clase="producto"
           />
         </div>
-
-        {/* Cubiertas */}
-        <div className={styles.contenedor_input}>
-          <label className={styles.label}>Cubiertas</label>
-          <input
-            type="checkbox"
-            name="cubiertas"
-            checked={cubiertas}
-            onChange={onChange}
-          />
-        </div>
-
-        {/* Caja */}
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Caja</label>
           <InputStock
@@ -249,6 +198,39 @@ useEffect(() => {
           />
         </div>
       </div>
+
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Descripción</label>
+          <InputStock
+            name="descripcion"
+            value={descripcion}
+            onChange={onChange}
+            type="text"
+            placeholder="Descripción"
+            clase="producto"
+          />
+        </div>
+
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Imágenes</label>
+          <input
+            name="imagenes"
+            onChange={onChange}
+            type="file"
+            multiple
+            accept="image/*"
+          />
+        </div>
+
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Cubiertas</label>
+          <input
+            type="checkbox"
+            name="cubiertas"
+            checked={cubiertas}
+            onChange={onChange}
+          />
+        </div>
 
       <button type="submit" className={styles.boton_formulario}>
         Enviar

@@ -26,12 +26,10 @@ const Inicio = () => {
     return <CirculoCargar />;
   }
 
+  console.log(producto)
+
   return (
     <>
-    {/* <div className={styles.contenedor_bienvenida}>
-          <h2 className={styles.titulo_bienvenida}>Bienvenidos a A86</h2>
-          <p className={styles.parrafo_bienvenida}>Te acompañamos en cada paso para que elijas tu próximo auto con confianza, respaldo y tranquilidad. Trabajamos con los principales bancos y ofrecemos asesoramiento personalizado. ¡Estamos para ayudarte!</p>
-        </div> */}
       <Banner />
       <section className={styles.contenedor_producto}>
         <Titulo titulo="Oportunidades únicas!" />
@@ -47,7 +45,6 @@ const Inicio = () => {
           )}
         </div>
       </section>
-      
     </>
   );
 };
