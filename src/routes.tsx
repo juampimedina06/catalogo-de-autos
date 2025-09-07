@@ -8,6 +8,7 @@ import TerminosCondiciones from "./pages/TerminosCondiciones/TerminosCondiciones
 import PreguntasFrecuentes from "./pages/PreguntasFrecuentes/PreguntasFrecuentes";
 import ProductoElegido from "./pages/ProductoElegido/ProductoElegido";
 import Autos from "./pages/Autos/autos";
+import Login from "./pages/Login/login";
 
 function AppRoutes() {
   return (
@@ -17,6 +18,7 @@ function AppRoutes() {
               <Route index element={<Inicio />} />
               <Route path="/Stock" element={<Stock />} />
               <Route path="/Autos" element={<Autos />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/NuevoProducto" element={ <NuevoProducto /> }/>
               <Route path="producto/:id" element={<ProductoElegido />} />
               <Route path="/TerminosCondiciones" element={<TerminosCondiciones />} />

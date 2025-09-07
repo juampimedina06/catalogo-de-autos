@@ -3,7 +3,7 @@ import styles from "./FormularioStock.module.css";
 
 interface PropsInputStock{
   name:string;
-  value:string | number;
+  value:string | number | string[];
   onChange: (e:React.ChangeEvent<HTMLInputElement>) => void;
   type: string;
   placeholder?:string;

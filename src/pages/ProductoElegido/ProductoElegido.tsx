@@ -60,8 +60,7 @@ const ProductoElegido = () => {
   useEffect(() => {
     if (productoElegido && todosLosProductos.length > 0) {
       const autosCategoria = todosLosProductos.filter(
-        (auto) => auto.categoria === productoElegido.categoria && 
-        auto.id !== productoElegido.id
+        (auto) => auto.categoria === productoElegido.categoria
       );
       setProductosCategoria(autosCategoria);
       console.log("Filtrados:", autosCategoria);
