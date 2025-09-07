@@ -1,5 +1,5 @@
 import { db } from './firebase-config';
-import { collection, addDoc, getDocs  } from "firebase/firestore";
+import { collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc  } from "firebase/firestore";
 import { ProductoType } from '../types/ProductoType';
 
 const productosRef = collection(db, "autos");
@@ -31,7 +31,52 @@ const obtener = async (): Promise<ProductoType[]> => {
   }
 }
 
+const obtenerPorId = async (id: string): Promise<ProductoType | null> => {
+  try {
+    const docRef = doc(db, "autos", id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return { id: docSnap.id, ...(docSnap.data() as Omit<ProductoType, "id">) };
+    } else {
+      console.warn("El documento no existe");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error al obtener producto por id", error);
+    return null;
+  }
+};
+
+const editar = async (id: string, producto: Partial<ProductoType>) => {
+  try {
+    const docRef = doc(db, "autos", id);
+    await updateDoc(docRef, {
+      ...producto,
+      actualizadoEn: new Date(),
+    });
+    return true;
+  } catch (error) {
+    console.error("Error al actualizar producto en Firestore", error);
+    return false;
+  }
+};
+
+const eliminar = async (id: string) => {
+  try {
+    const docRef = doc(db, "autos", id);
+    await deleteDoc(docRef);
+    return true;
+  } catch (error) {
+    console.error("Error al eliminar producto en Firestore", error);
+    return false;
+  }
+};
+
 export default {
   crear,
-  obtener
+  obtener,
+  obtenerPorId,
+  editar,
+  eliminar
 };
