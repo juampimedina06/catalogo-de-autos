@@ -1,28 +1,62 @@
-import { createClient } from "@supabase/supabase-js";
+import { ProductoType } from "../types/ProductoType";
+import { supabase } from "./supabase-config";
 
-const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);
+const crear = async (auto : ProductoType) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .insert([auto]);
 
-
-const obtener = async () => {
-  const { data, error } = await supabase.from("autos").select("*");
   if (error) throw error;
   return data;
 };
 
+const obtener = async () => {
+  const { data, error } = await supabase
+    .from("autos")
+    .select("*"); 
 
-export default{
-  obtener
-}
+  if (error) throw error;
+  return data;
+};
 
+const obtenerPorId = async (id : number) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .select("*")
+    .eq("id", id)
+    .single();
 
+  if (error) throw error;
+  return data;
+};
 
+const editar = async (id : number, auto : any) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .update(auto)
+    .eq("id", id);
 
+  if (error) throw error;
+  return data;
+};
 
+export const eliminar = async (id : number) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .delete()
+    .eq("id", id);
 
+  if (error) throw error;
+  return data;
+};
 
-
-
-
+export default {
+  crear,
+  obtener,
+  obtenerPorId,
+  editar,
+  eliminar
+};
 
 // import { db } from './firebase-config';
 // import { collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc  } from "firebase/firestore";
