@@ -1,9 +1,21 @@
+
+
 .contenedor_producto {
   display: flex;
   margin-bottom: 4rem;
   margin-top: 1rem;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenido_producto{
+  display: flex;
+  margin-bottom: 4rem;
+  margin-top: 1rem;
+  flex-direction: column;
+  width: 90%;
   justify-content: center;
   align-items: center;
 }

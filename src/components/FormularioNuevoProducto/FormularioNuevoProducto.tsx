@@ -10,7 +10,6 @@ onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
 
   nombre: string;
-  titulo: string;
   categoria: string;
   precio: number | string; 
   modelo: number | string;
@@ -30,7 +29,6 @@ const FormularioNuevoProducto = ({
   onSubmit,
   onChange,
   nombre,
-  titulo,
   categoria,
   precio,
   modelo,
@@ -50,7 +48,6 @@ const FormularioNuevoProducto = ({
   return (
     <form className={styles.formulario} onSubmit={onSubmit}>
       <div className={styles.contenedor_inputs}>
-
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Nombre del Auto</label>
           <InputStock
@@ -63,13 +60,13 @@ const FormularioNuevoProducto = ({
           />
         </div>
         <div className={styles.contenedor_input}>
-          <label className={styles.label}>Título</label>
+          <label className={styles.label}>Combustible</label>
           <InputStock
-            name="titulo"
-            value={titulo}
+            name="combustible"
+            value={combustible}
             onChange={onChange}
             type="text"
-            placeholder="Título del Auto"
+            placeholder="Tipo de Combustible"
             clase="producto"
           />
         </div>
@@ -148,18 +145,6 @@ const FormularioNuevoProducto = ({
         </div>
       </div>
 
-      <div className={styles.contenedor_inputs}>
-        <div className={styles.contenedor_input}>
-          <label className={styles.label}>Combustible</label>
-          <InputStock
-            name="combustible"
-            value={combustible}
-            onChange={onChange}
-            type="text"
-            placeholder="Tipo de Combustible"
-            clase="producto"
-          />
-        </div>
         <div className={styles.contenedor_input}>
           <label className={styles.label}>Equipamiento</label>
           <InputStock
@@ -171,7 +156,6 @@ const FormularioNuevoProducto = ({
             clase="producto"
           />
         </div>
-      </div>
 
         
       <div className={styles.contenedor_inputs}>
@@ -223,14 +207,18 @@ const FormularioNuevoProducto = ({
         </div>
 
         <div className={styles.contenedor_input}>
-          <label className={styles.label}>Cubiertas</label>
+          <label className={styles.checkbox}>
           <input
             type="checkbox"
             name="cubiertas"
             checked={cubiertas}
             onChange={onChange}
           />
+          <span className={styles.checkmark}></span>
+          Cubiertas
+        </label>
         </div>
+
 
       <button type="submit" className={styles.boton_formulario}>
         Enviar
@@ -241,36 +229,3 @@ const FormularioNuevoProducto = ({
 
 
 export default FormularioNuevoProducto;
-
-{/* <InputStock 
-        name={nameImangenDos}
-        value={valueImagenDos}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImangenTres}
-        value={valueImagenTres}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImangenCuatro}
-        value={valueImagenCuatro}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImagenCinco}
-        value={valueImagenCinco}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      /> */}

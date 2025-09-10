@@ -16,10 +16,10 @@ const Producto = ({nombre, precio, imagenes}:PropsProducto) => {
             <img
               className={styles.imagen}
               alt="Producto"
-              src={imagenes[0]}
+              src={imagenes[2]}
             />
             <img 
-              src={imagenes[1]} 
+              src={imagenes[3]} 
               alt="" 
               className={styles.imagen_hover}
             />

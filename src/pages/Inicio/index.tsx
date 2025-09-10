@@ -26,13 +26,12 @@ const Inicio = () => {
     return <CirculoCargar />;
   }
 
-  console.log(producto)
-
   return (
     <>
       <Banner />
       <section className={styles.contenedor_producto}>
-        <Titulo titulo="Oportunidades únicas!" />
+        <div className={styles.contenido_producto}>
+          <Titulo titulo="Oportunidades únicas!" />
         <div className={styles.producto}>
           {producto.length === 0 ? (
             <ElementoNoEncontrado tipoDato="Nombre" />
@@ -44,6 +43,8 @@ const Inicio = () => {
             ))
           )}
         </div>
+        </div>
+        
       </section>
     </>
   );

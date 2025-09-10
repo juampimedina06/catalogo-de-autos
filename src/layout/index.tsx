@@ -4,7 +4,6 @@ import { Outlet } from 'react-router-dom'
 import Pie from '../components/Pie/Pie'
 import BotonWasap from '../components/BotonWasap/BotonWasap'
 
-
 function PaginaBase() {
   return (
       <main>
@@ -14,6 +13,7 @@ function PaginaBase() {
                 <Outlet />
             </Container>
         <Pie />
+        
     </main>
   )
 }

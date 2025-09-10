@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useState, useCallback, ReactNode } from "react";
-import { User, onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from "../services/firebase-config"; 
+import { supabase } from "../services/supabase-config";
+import { data } from "react-router-dom";
 
 // Definimos el tipo del contexto
 interface AuthContextType {
-    user: User | null;
+    user: string | null;
     logout: () => Promise<void>;
 }
 
@@ -20,20 +20,27 @@ export const useAuth = () => {
 
 // Provider
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<any | null>(null);
 
   // Escuchar cambios en la sesión
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-        setUser(firebaseUser);
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
     });
-    return () => unsubscribe();
-  }, []);
+
+    supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
+
+    return () => {
+      listener.subscription.unsubscribe();
+    };
+   },[]);
 
   // Logout
-  const logout = useCallback(async () => {
-    await signOut(auth);
-  }, []);
+
+    const logout = useCallback(async ()=>{
+      await supabase.auth.signOut();
+      setUser(null);
+    }, [])
 
   return (
     <AuthContext.Provider value={{ user, logout }}>

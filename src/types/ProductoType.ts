@@ -1,7 +1,6 @@
 export  interface ProductoType {
-  id?: string;
+  id?: number;
   nombre:string;
-  titulo:string;
   categoria:string;
   precio:number;
   modelo:number;
@@ -14,5 +13,5 @@ export  interface ProductoType {
   imagenes:string[];
   datos_externos:string[];
   cubiertas:boolean;
-caja:string;
+  caja:string;
 }

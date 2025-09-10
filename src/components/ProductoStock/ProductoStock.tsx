@@ -4,38 +4,41 @@ import styles from './ProductoStock.module.css'
 import FormularioStock from '../FormularioStock/FormularioStock'
 import servicioProducto from "../../services/productos"
 import { useForm } from "../../hooks/useForm";
-import { ProductoType } from '../../types/ProductoType'
+import { autoStock } from '../../types/stockType'
 
 interface FormData{
   nuevoNombre:string;
   nuevaCategoria:string; 
   nuevoPrecio:number;
+  nuevoKilometros:number;
 }
 
 interface PropsProductoStock {
-  filtrarProductos: ProductoType[];
-  actualizarProductoEstado: (actualizar: (productosPrevios: ProductoType[]) => ProductoType[]) => void;
-  eliminarProductoEstado: (eliminar: (productosPrevios: ProductoType[]) => ProductoType[]) => void;
+  filtrarProductos: autoStock[];
+  actualizarProductoEstado: (actualizar: (productosPrevios: autoStock[]) => autoStock[]) => void;
+  eliminarProductoEstado: (eliminar: (productosPrevios: autoStock[]) => autoStock[]) => void;
   mensajeNotificacion: (mensaje: string) => void;
   tipoNotificacion: (tipo: string | null) => void;
 }
 
 const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProductoEstado, mensajeNotificacion, tipoNotificacion } : PropsProductoStock ) => {
-  const [editar, setEditar] = useState<string | undefined>(undefined);
+  const [editar, setEditar] = useState<number | undefined>(undefined);
 
-  const editarProducto = (producto: ProductoType) => {
+  const editarProducto = (producto: autoStock) => {
   setEditar(producto.id)
   setFormulario({
     nuevoNombre: producto.nombre,
     nuevaCategoria: producto.categoria,
-    nuevoPrecio: producto.precio
+    nuevoPrecio: producto.precio,
+    nuevoKilometros: producto.kilometros
   })
 }
 
-  const {handleChange, nuevoNombre, nuevaCategoria, nuevoPrecio, setFormulario} = useForm<FormData>({
+  const {handleChange, nuevoNombre, nuevaCategoria, nuevoPrecio, nuevoKilometros, setFormulario} = useForm<FormData>({
   nuevoNombre: '',
   nuevaCategoria:'',
   nuevoPrecio:0,
+  nuevoKilometros:0
   })
 
   const actualizarProducto = (e:React.FormEvent<HTMLFormElement>) => {
@@ -47,6 +50,7 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
         nombre: nuevoNombre,
         categoria: nuevaCategoria,
         precio:nuevoPrecio,
+        kilometros:nuevoKilometros
       }
       if(nuevoNombre.length  > 25){
         alert("Nombre muy largo(maximo 25 caracteres)")
@@ -79,7 +83,7 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
       });
   }
 
-  const eliminarProducto = (id : string) => {
+  const eliminarProducto = (id : number) => {
       if (window.confirm('¿Seguro que querés eliminar el producto?')) {
         servicioProducto
         .eliminar(id)
@@ -108,12 +112,14 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
               nameNombre="nuevoNombre" valueNombre={nuevoNombre}
               nameCategoria="nuevaCategoria"  valueCategoria={nuevaCategoria}
               namePrecio="nuevoPrecio" valuePrecio={nuevoPrecio}
+              nameKilometros='nuevoKilometros' valueKilometros={nuevoKilometros}
             />
           :
             <div className={styles.contenedor_informacion}>
               <InformacionProducto productoInformacion={producto.nombre} />
               <InformacionProducto productoInformacion={producto.categoria} />
               <InformacionProducto productoInformacion={producto.precio} texto='$' /> 
+              <InformacionProducto productoInformacion={producto.kilometros}  /> 
             </div>
           }
         </div>

@@ -5,7 +5,6 @@ import { useForm } from "../../hooks/useForm";
 
 interface FormAuto {
   nombre: string;
-  titulo: string;
   categoria: string;
   precio: number;
   modelo: number;
@@ -25,7 +24,6 @@ const NuevoProducto = () => {
   const {
     handleChange,
     nombre,
-    titulo,
     categoria,
     precio,
     modelo,
@@ -41,7 +39,6 @@ const NuevoProducto = () => {
     caja,
   } = useForm<FormAuto>({
     nombre: "",
-    titulo: "",
     categoria: "",
     precio: 0,
     modelo: 0,
@@ -63,7 +60,6 @@ const NuevoProducto = () => {
 
     const nuevoAuto = {
       nombre,
-      titulo,
       categoria,
       precio,
       modelo,
@@ -99,7 +95,6 @@ const NuevoProducto = () => {
           onSubmit={subirProducto}
           onChange={handleChange}
           nombre={nombre}
-          titulo={titulo}
           categoria={categoria}
           precio={precio}
           modelo={modelo}

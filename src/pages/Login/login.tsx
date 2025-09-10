@@ -1,53 +1,41 @@
 import React, { useState, FormEvent } from 'react';
 import styles from "./login.module.css"; 
-import { signInWithEmailAndPassword } from 'firebase/auth'; 
-import { FirebaseError } from 'firebase/app'; 
-import { auth } from '../../services/firebase-config'; 
+import { supabase } from '../../services/supabase-config'; 
 import { useAuth } from '../../context/AuthContext';
 
 const LoginForm: React.FC = () => { 
   const [email, setEmail] = useState<string>(''); 
   const [password, setPassword] = useState<string>(''); 
   const [error, setError] = useState<string | null>(null);
-  const {user, logout} = useAuth();
-  console.log(user)
+  const { user } = useAuth();
+
+
   const handleLogin = async (e: FormEvent) => { 
     e.preventDefault();
     setError(null); 
 
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('Usuario logueado con éxito!');
-      setEmail(''); 
-      setPassword('');
-    } catch (err: any) { 
-      let errorMessage = "Ocurrió un error desconocido.";
-      if (err instanceof FirebaseError) {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password});
 
-        switch (err.code) {
-          case 'auth/user-not-found':
-            errorMessage = "No se encontró ningún usuario con ese email.";
-            break;
-          case 'auth/wrong-password':
-            errorMessage = "Contraseña incorrecta. Por favor, inténtalo de nuevo.";
-            break;
-          case 'auth/invalid-email':
-            errorMessage = "El formato del email es inválido.";
-            break;
-
-          default:
-            errorMessage = err.message;
-            break;
-        }
-      } else if (err instanceof Error) {
-
-          errorMessage = err.message;
+    if(error){
+      let errorMsg = "Error";
+      switch(error.message){
+        case 'Invalid login credentials':
+          errorMsg = "Datos incorrectos";
+          break;
+        case 'Email not confirmed':
+          errorMsg = "No esta confirmado el mail";
+          break;
+        default:
+          errorMsg = error.message;
       }
-      setError(errorMessage);
-      console.error("Error al iniciar sesión:", err);
+      setError(errorMsg);
+      return
     }
-  };
 
+    setEmail('');
+    setPassword('');
+    setError(null);
+  };
   return (
     <form onSubmit={handleLogin} className={styles.form}>
       <h2 className={styles.h2}>Iniciar Sesión</h2>
