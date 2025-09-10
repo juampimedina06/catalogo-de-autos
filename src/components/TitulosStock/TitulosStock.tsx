@@ -4,7 +4,8 @@ import styles from './TitulosStock.module.css';
 const tiposTitulos = [
   'NOMBRE',
   'CATEGORIA',
-  'PRECIO'
+  'PRECIO',
+  'KILOMETROS'
 ];
 
 const TitulosStock = () => {

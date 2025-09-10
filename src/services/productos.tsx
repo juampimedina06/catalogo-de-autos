@@ -1,6 +1,15 @@
 import { ProductoType } from "../types/ProductoType";
 import { supabase } from "./supabase-config";
 
+const obtenerStock = async () => {
+  const {data, error} = await supabase
+  .from("autos")
+  .select("id, nombre, categoria, precio, descripcion, kilometros")
+
+  if(error) throw error;
+  return data;
+}
+
 const crear = async (auto : ProductoType) => {
   const { data, error } = await supabase
     .from("autos")
@@ -55,7 +64,8 @@ export default {
   obtener,
   obtenerPorId,
   editar,
-  eliminar
+  eliminar,
+  obtenerStock
 };
 
 // import { db } from './firebase-config';

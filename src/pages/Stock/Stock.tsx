@@ -8,26 +8,29 @@ import ElementoNoEncontrado from '../../components/ElementoNoEncontrado/Elemento
 import servicioProducto from "../../services/productos"
 import Notificacion from '../../components/Notificacion/Notificacion'
 import { useForm } from '../../hooks/useForm'
-import { ProductoType } from '../../types/ProductoType'
+import { autoStock } from '../../types/stockType'
 
 interface dataForm {
   filtrador: string;
 }
 
+
 const Stock = () => {
-  const [producto, setProducto] = useState<ProductoType[]>([])
+  const [producto, setProducto] = useState<autoStock[]>([])
   const [loading, setLoading] = useState<boolean>(true)
   const [notificacionPersona, setNotificacionPersona] = useState<string>('')
   const [tipoNotificacion, setTipoNotificacion] = useState<string | null>(null)
   
   useEffect(() => {
     servicioProducto
-    .obtener()
-    .then ((data : ProductoType[] ) =>{
+    .obtenerStock()
+    .then ((data : autoStock[]) =>{
       setProducto(data)
       setLoading(false)
     })
   },[])
+
+  console.log(producto)
 
   const {handleChange, filtrador} = useForm<dataForm>({
     filtrador:'',

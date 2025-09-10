@@ -27,7 +27,7 @@ const Cabecera = () => {
         </div>
         <div className={styles.contenedor_logo}>
           <Link to='/'>
-            <img className={styles.logo} src="assets/logo_sinfondo.png" alt="Logo negocio" />
+            <img className={styles.logo} src="img/a86.png" alt="Logo negocio" />
           </Link>
         </div>
       

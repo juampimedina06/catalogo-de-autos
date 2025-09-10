@@ -207,14 +207,18 @@ const FormularioNuevoProducto = ({
         </div>
 
         <div className={styles.contenedor_input}>
-          <label className={styles.label}>Cubiertas</label>
+          <label className={styles.checkbox}>
           <input
             type="checkbox"
             name="cubiertas"
             checked={cubiertas}
             onChange={onChange}
           />
+          <span className={styles.checkmark}></span>
+          Cubiertas
+        </label>
         </div>
+
 
       <button type="submit" className={styles.boton_formulario}>
         Enviar
@@ -225,36 +229,3 @@ const FormularioNuevoProducto = ({
 
 
 export default FormularioNuevoProducto;
-
-{/* <InputStock 
-        name={nameImangenDos}
-        value={valueImagenDos}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImangenTres}
-        value={valueImagenTres}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImangenCuatro}
-        value={valueImagenCuatro}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImagenCinco}
-        value={valueImagenCinco}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      /> */}

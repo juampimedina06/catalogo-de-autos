@@ -10,6 +10,7 @@ interface PropsFormularioStock{
   nameNombre:string; valueNombre:string;
   nameCategoria:string; valueCategoria:string;
   namePrecio:string; valuePrecio:number;
+  nameKilometros:string; valueKilometros:number;
 }
 
 const FormularioStock = ({
@@ -17,7 +18,8 @@ const FormularioStock = ({
     onChange,
     nameNombre,valueNombre,
     nameCategoria, valueCategoria,
-    namePrecio,valuePrecio
+    namePrecio,valuePrecio,
+    nameKilometros, valueKilometros
 } : PropsFormularioStock) => {
 
   const [categorias, setCategorias] = useState<string[]>([valueCategoria])
@@ -50,6 +52,13 @@ const FormularioStock = ({
       <InputStock 
         name={namePrecio}
         value={valuePrecio}
+        onChange={onChange}
+        type="number"
+        clase="stock"
+      />
+      <InputStock 
+        name={nameKilometros}
+        value={valueKilometros}
         onChange={onChange}
         type="number"
         clase="stock"

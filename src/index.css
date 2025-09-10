@@ -8,6 +8,7 @@ html{
     --color-tercero: #868686;
     --color-claro: #fefefe;
     --color-primary: #121212;
+    
 }
 
 [data-theme="light"] {
@@ -35,8 +36,4 @@ body{
     margin: 0;
     font-family: var(--font);
 }
-
-
-
-
 
