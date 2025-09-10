@@ -3,6 +3,5 @@ export interface autoStock{
   nombre:string;
   categoria:string;
   precio:number;
-  descripcion:string;
   kilometros:number;
 }

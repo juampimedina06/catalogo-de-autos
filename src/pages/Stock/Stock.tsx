@@ -24,7 +24,7 @@ const Stock = () => {
   useEffect(() => {
     servicioProducto
     .obtenerStock()
-    .then ((data : autoStock[]) =>{
+    .then ((data) =>{
       setProducto(data)
       setLoading(false)
     })

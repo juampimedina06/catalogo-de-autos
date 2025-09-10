@@ -1,14 +1,15 @@
 import { ProductoType } from "../types/ProductoType";
+import { autoStock } from "../types/stockType";
 import { supabase } from "./supabase-config";
 
-const obtenerStock = async () => {
-  const {data, error} = await supabase
-  .from("autos")
-  .select("id, nombre, categoria, precio, descripcion, kilometros")
+const obtenerStock = async (): Promise<autoStock[]> => {
+  const { data, error } = await supabase
+    .from("autos")
+    .select("id, nombre, categoria, precio, kilometros");
 
-  if(error) throw error;
-  return data;
-}
+  if (error) throw error;
+  return data ?? []; 
+};
 
 const crear = async (auto : ProductoType) => {
   const { data, error } = await supabase
