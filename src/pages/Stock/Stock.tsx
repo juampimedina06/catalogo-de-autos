@@ -30,8 +30,6 @@ const Stock = () => {
     })
   },[])
 
-  console.log(producto)
-
   const {handleChange, filtrador} = useForm<dataForm>({
     filtrador:'',
   })

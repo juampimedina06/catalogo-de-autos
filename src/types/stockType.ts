@@ -1,7 +1,7 @@
 export interface autoStock{
   id:number;
   nombre:string;
-  categoria:string;
+  modelo:number;
   precio:number;
   kilometros:number;
 }

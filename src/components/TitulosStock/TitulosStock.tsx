@@ -3,7 +3,7 @@ import styles from './TitulosStock.module.css';
 
 const tiposTitulos = [
   'NOMBRE',
-  'CATEGORIA',
+  'MODELO',
   'PRECIO',
   'KILOMETROS'
 ];

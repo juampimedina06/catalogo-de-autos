@@ -8,7 +8,7 @@ import { autoStock } from '../../types/stockType'
 
 interface FormData{
   nuevoNombre:string;
-  nuevaCategoria:string; 
+  nuevoModelo: number;
   nuevoPrecio:number;
   nuevoKilometros:number;
 }
@@ -28,15 +28,15 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
   setEditar(producto.id)
   setFormulario({
     nuevoNombre: producto.nombre,
-    nuevaCategoria: producto.categoria,
+    nuevoModelo: producto.modelo,
     nuevoPrecio: producto.precio,
     nuevoKilometros: producto.kilometros
   })
 }
 
-  const {handleChange, nuevoNombre, nuevaCategoria, nuevoPrecio, nuevoKilometros, setFormulario} = useForm<FormData>({
+  const {handleChange, nuevoNombre, nuevoModelo, nuevoPrecio, nuevoKilometros, setFormulario} = useForm<FormData>({
   nuevoNombre: '',
-  nuevaCategoria:'',
+  nuevoModelo:0,
   nuevoPrecio:0,
   nuevoKilometros:0
   })
@@ -48,7 +48,7 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
       const objetoProducto = {
         id:editar!,
         nombre: nuevoNombre,
-        categoria: nuevaCategoria,
+        modelo: nuevoModelo,
         precio:nuevoPrecio,
         kilometros:nuevoKilometros
       }
@@ -110,14 +110,14 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
               onSubmit={actualizarProducto}
               onChange={handleChange}
               nameNombre="nuevoNombre" valueNombre={nuevoNombre}
-              nameCategoria="nuevaCategoria"  valueCategoria={nuevaCategoria}
+              nameModelo="nuevoModelo" valueModelo={nuevoModelo}
               namePrecio="nuevoPrecio" valuePrecio={nuevoPrecio}
               nameKilometros='nuevoKilometros' valueKilometros={nuevoKilometros}
             />
           :
             <div className={styles.contenedor_informacion}>
               <InformacionProducto productoInformacion={producto.nombre} />
-              <InformacionProducto productoInformacion={producto.categoria} />
+              <InformacionProducto productoInformacion={producto.modelo} />
               <InformacionProducto productoInformacion={producto.precio} texto='$' /> 
               <InformacionProducto productoInformacion={producto.kilometros}  /> 
             </div>

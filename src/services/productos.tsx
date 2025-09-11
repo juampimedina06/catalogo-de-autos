@@ -5,7 +5,7 @@ import { supabase } from "./supabase-config";
 const obtenerStock = async (): Promise<autoStock[]> => {
   const { data, error } = await supabase
     .from("autos")
-    .select("id, nombre, categoria, precio, kilometros");
+    .select("id, nombre, modelo, precio, kilometros");
 
   if (error) throw error;
   return data ?? []; 

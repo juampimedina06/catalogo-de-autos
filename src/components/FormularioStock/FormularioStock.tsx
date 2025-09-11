@@ -1,14 +1,11 @@
 import InputStock from "./InputStock"
 import styles from "./FormularioStock.module.css"
-import servicioProductos from "../../services/productos"
-import { useEffect, useState } from "react"
-import InputCategoria from "../InputCategoria/InputCategoria"
 
 interface PropsFormularioStock{
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   nameNombre:string; valueNombre:string;
-  nameCategoria:string; valueCategoria:string;
+  nameModelo:string; valueModelo:number;
   namePrecio:string; valuePrecio:number;
   nameKilometros:string; valueKilometros:number;
 }
@@ -17,21 +14,11 @@ const FormularioStock = ({
     onSubmit, 
     onChange,
     nameNombre,valueNombre,
-    nameCategoria, valueCategoria,
+    nameModelo, valueModelo,
     namePrecio,valuePrecio,
     nameKilometros, valueKilometros
 } : PropsFormularioStock) => {
 
-  const [categorias, setCategorias] = useState<string[]>([valueCategoria])
-
-  useEffect(() =>{
-  servicioProductos
-  .obtener()
-  .then(response =>{
-      const categorias = [...new Set(response.map(producto => producto.categoria))];
-      setCategorias(categorias);
-  })
-  },[])
 
   return (
     <form className={styles.formulario} onSubmit={onSubmit}>
@@ -42,12 +29,12 @@ const FormularioStock = ({
         type="text"
         clase="stock"
       />
-      <InputCategoria 
-      name={nameCategoria}
-      value={valueCategoria}
-      handleChange={onChange} 
-      categorias={categorias}
-      clase="stock"
+      <InputStock 
+        name={nameModelo}
+        value={valueModelo}
+        onChange={onChange}
+        type="number"
+        clase="stock"
       />
       <InputStock 
         name={namePrecio}

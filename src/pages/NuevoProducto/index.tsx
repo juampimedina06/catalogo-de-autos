@@ -80,7 +80,7 @@ const NuevoProducto = () => {
       .crear(nuevoAuto)
       .then((respuesta) => {
         console.log("producto subido con exito", respuesta);
-        window.location.href = "/";
+        window.location.href = "/Stock";
       })
       .catch((error) => {
         console.log("error al subir el producto", error);
