@@ -7,7 +7,6 @@ import CirculoCargar from '../../components/CirculoCargar/CirculoCargar';
 import ElementoNoEncontrado from '../../components/ElementoNoEncontrado/ElementoNoEncontrado';
 import { Link } from 'react-router-dom';
 import servicioProducto from "../../services/productos"
-import type { ProductoType } from '../../types/ProductoType';
 import { autosPage } from '../../types/autosType';
 
 const Inicio = () => {
@@ -17,11 +16,13 @@ const Inicio = () => {
   useEffect(() => {
     servicioProducto
       .obtener()
-      .then((response: autosPage[]) => {
+      .then((response) => {
         setProducto(response.slice(0, 9));
         setLoading(false);
       });
   }, []);
+
+  console.log(producto)
 
   if (loading) {
     return <CirculoCargar />;
@@ -39,12 +40,7 @@ const Inicio = () => {
           ) : (
             producto.map((producto) => (
               <Link to={`producto/${producto.id}`} key={producto.id}>
-                <Producto {...{ 
-                  ...producto, 
-                  imagenes: Array.isArray(producto.imagenes) 
-                    ? producto.imagenes.map(img => String(img)) 
-                    : [] 
-                }} />
+                <Producto {...producto} />
               </Link>
             ))
           )}

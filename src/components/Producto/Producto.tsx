@@ -19,7 +19,7 @@ const Producto = ({nombre, precio, imagenes}:PropsProducto) => {
               src={imagenes[2]}
             />
             <img 
-              src={imagenes[3]} 
+              src={imagenes[1]} 
               alt="" 
               className={styles.imagen_hover}
             />
