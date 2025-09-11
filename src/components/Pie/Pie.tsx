@@ -59,11 +59,11 @@ const Pie = () => {
             <FaCcPaypal />
           </div>
 
-          <p className={styles.texto_derechos}>© 2025 NOMBRE_NEGOCIO — Todos los derechos reservados.</p>
+          <p className={styles.texto_derechos}>© 2025 A86 — Todos los derechos reservados.</p>
 
           <Path indicador="ir a LinkedIn">
             <p className={styles.autor}>
-              Desarrollado por <a className={styles.linkedin} href="https://www.linkedin.com/in/juan-pablo-medina-199b3b2b4/" target="_blank" rel="noopener noreferrer">Juan Pablo Medina</a>
+              Desarrollado por <a className={styles.linkedin} href="https://www.linkedin.com/in/juan-pablo-medina-199b3b2b4/" target="_blank" rel="noopener noreferrer">Juan Pablo Medina</a> y <a className={styles.linkedin} href="https://www.linkedin.com/in/angel-iv%C3%A1n-l%C3%B3pez/" target="_blank" rel="noopener noreferrer">Angel Iván López</a>
             </p>
           </Path>
         </div>

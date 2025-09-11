@@ -8,15 +8,16 @@ import ElementoNoEncontrado from '../../components/ElementoNoEncontrado/Elemento
 import { Link } from 'react-router-dom';
 import servicioProducto from "../../services/productos"
 import type { ProductoType } from '../../types/ProductoType';
+import { autosPage } from '../../types/autosType';
 
 const Inicio = () => {
-  const [producto, setProducto] = useState<ProductoType[]>([]);
+  const [producto, setProducto] = useState<autosPage[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     servicioProducto
       .obtener()
-      .then((response: ProductoType[]) => {
+      .then((response: autosPage[]) => {
         setProducto(response.slice(0, 9));
         setLoading(false);
       });
@@ -38,7 +39,12 @@ const Inicio = () => {
           ) : (
             producto.map((producto) => (
               <Link to={`producto/${producto.id}`} key={producto.id}>
-                <Producto {...producto} />
+                <Producto {...{ 
+                  ...producto, 
+                  imagenes: Array.isArray(producto.imagenes) 
+                    ? producto.imagenes.map(img => String(img)) 
+                    : [] 
+                }} />
               </Link>
             ))
           )}

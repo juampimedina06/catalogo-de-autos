@@ -1,3 +1,4 @@
+import { autosPage } from "../types/autosType";
 import { ProductoType } from "../types/ProductoType";
 import { autoStock } from "../types/stockType";
 import { supabase } from "./supabase-config";
@@ -20,13 +21,13 @@ const crear = async (auto : ProductoType) => {
   return data;
 };
 
-const obtener = async () => {
+const obtener = async (): Promise<autosPage[]> => {
   const { data, error } = await supabase
     .from("autos")
-    .select("*"); 
+    .select("id, nombre, precio, imagenes, categoria"); 
 
   if (error) throw error;
-  return data;
+  return data ?? [];
 };
 
 const obtenerPorId = async (id : number) => {

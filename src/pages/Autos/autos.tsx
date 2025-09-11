@@ -9,7 +9,7 @@ import BotonCategoria from '../../components/BotonCategoria';
 import { Link } from 'react-router-dom';
 import { useForm } from '../../hooks/useForm';
 import servicioProducto from "../../services/productos"
-import type { ProductoType } from '../../types/ProductoType';
+import type { autosPage } from '../../types/autosType';
 
 import type { SelectChangeEvent } from '@mui/material/Select';
 
@@ -20,7 +20,7 @@ interface FormData{
 }
 
 const Autos = () => {
-  const [producto, setProducto] = useState<ProductoType[]>([]);
+  const [producto, setProducto] = useState<autosPage[]>([]);
   const [categorias, setCategorias] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -43,7 +43,7 @@ const Autos = () => {
   useEffect(() => {
     servicioProducto
       .obtener()
-      .then((response: ProductoType[]) => {
+      .then((response: autosPage[]) => {
         setProducto(response);
         setLoading(false);
         const categoriasUnicas = [...new Set(response.map(p => p.categoria))];
@@ -92,7 +92,12 @@ const Autos = () => {
           ) : (
             filtrarProductos.map((producto) => (
               <Link to={`/producto/${producto.id}`} key={producto.id}>
-                <Producto {...producto} />
+                <Producto {...{ 
+                  ...producto, 
+                  imagenes: Array.isArray(producto.imagenes) 
+                    ? producto.imagenes.map(img => String(img)) 
+                    : [] 
+                }} />
               </Link>
             ))
           )}
