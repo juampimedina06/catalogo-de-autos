@@ -22,12 +22,12 @@ const crear = async (auto : ProductoType) => {
 };
 
 const obtener = async (): Promise<autosPage[]> => {
-  const { data, error } = await supabase
-    .from("autos")
-    .select("id, nombre, precio, imagenes, categoria"); 
+const { data, error } = await supabase
+  .from("autos_preview")
+  .select("*");
 
   if (error) throw error;
-  return data ?? [];
+  return (data ?? []) as unknown as autosPage[];
 };
 
 const obtenerPorId = async (id : number) => {
