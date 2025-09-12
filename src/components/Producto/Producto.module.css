@@ -29,24 +29,6 @@
   object-fit: cover;
 }
 
-.imagen_hover {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
-.contenedor_imagen:hover .imagen_hover {
-  opacity: 1;
-}
-
-.contenedor_imagen:hover .imagen {
-  opacity: 0;
-}
 
 
 .contenedor_informacion {

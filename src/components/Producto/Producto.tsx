@@ -4,7 +4,7 @@ import { CardActionArea} from '@mui/material';
 interface PropsProducto{
   nombre:string;
   precio:number;
-  imagenes:string[];
+  imagenes:string;
 }
 
 
@@ -16,12 +16,7 @@ const Producto = ({nombre, precio, imagenes}:PropsProducto) => {
             <img
               className={styles.imagen}
               alt="Producto"
-              src={imagenes[2]}
-            />
-            <img 
-              src={imagenes[1]} 
-              alt="" 
-              className={styles.imagen_hover}
+              src={imagenes}
             />
         </div>
         <div className={styles.contenedor_informacion}>

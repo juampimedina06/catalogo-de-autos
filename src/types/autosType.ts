@@ -3,5 +3,5 @@ export interface autosPage{
   nombre:string;
   categoria:string;
   precio:number;
-  imagenes:string[];
+  imagenes:string;
 }
