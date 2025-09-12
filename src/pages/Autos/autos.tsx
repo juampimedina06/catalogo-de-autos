@@ -87,17 +87,12 @@ const Autos = () => {
         )}
 
         <div className={styles.producto}>
-          {filtrarProductos.length === 0 ? (
+          {producto.length === 0 ? (
             <ElementoNoEncontrado tipoDato="Nombre" />
           ) : (
-            filtrarProductos.map((producto) => (
-              <Link to={`/producto/${producto.id}`} key={producto.id}>
-                <Producto {...{ 
-                  ...producto, 
-                  imagenes: Array.isArray(producto.imagenes) 
-                    ? producto.imagenes.map(img => String(img)) 
-                    : [] 
-                }} />
+            producto.map((producto) => (
+              <Link to={`producto/${producto.id}`} key={producto.id}>
+                <Producto {...producto} />
               </Link>
             ))
           )}
