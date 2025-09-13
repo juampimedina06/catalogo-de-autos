@@ -2,8 +2,6 @@
 
 .contenedor_producto {
   display: flex;
-  margin-bottom: 4rem;
-  margin-top: 1rem;
   flex-direction: column;
   width: 100%;
   justify-content: center;

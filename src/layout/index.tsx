@@ -1,21 +1,24 @@
 import Cabecera from '../components/Cabecera/Cabecera'
-import Container from '../components/Container'
-import { Outlet } from 'react-router-dom'
 import Pie from '../components/Pie/Pie'
 import BotonWasap from '../components/BotonWasap/BotonWasap'
+import styles from './Layout.module.css'
+import { ReactNode } from "react";
 
-function PaginaBase() {
+type Props = {
+  children: ReactNode;
+};
+
+export default function Layout({ children }: Props) {
   return (
-      <main>
-        <BotonWasap />
+    <div className="">
+      <BotonWasap />
         <Cabecera />
-            <Container>
-                <Outlet />
-            </Container>
-        <Pie />
-        
-    </main>
-  )
-}
 
-export default PaginaBase
+      <main className={styles.main}>
+        {children}
+      </main>
+
+      <Pie />
+    </div>
+  );
+}

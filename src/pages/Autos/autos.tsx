@@ -43,7 +43,7 @@ const Autos = () => {
   useEffect(() => {
     servicioProducto
       .obtener()
-      .then((response: autosPage[]) => {
+      .then((response) => {
         setProducto(response);
         setLoading(false);
         const categoriasUnicas = [...new Set(response.map(p => p.categoria))];

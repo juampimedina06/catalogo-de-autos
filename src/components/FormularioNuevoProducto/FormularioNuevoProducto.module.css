@@ -26,13 +26,11 @@
 .boton_formulario {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #000;
+  border: 1px solid #fff;
   color: #ffffff;
   font-weight: 600;
   font-size: 1rem;
-  border: none;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(13, 0, 252, 0.952);
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;

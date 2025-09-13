@@ -43,15 +43,13 @@ const Stock = () => {
 
   return (
     <>
-    <header className={styles.contenedor_barra}>
+    <section className={styles.contenedor_productos}>
       <BarraBusqueda
         placeholder='Introduzca el nombre de auto que quiere buscar...' 
         value={filtrador}
         onChange={handleChange}
         name='filtrador'
       />
-    </header>
-    <section className={styles.contenedor_productos}>
       {
         filtrarProductos.length === 0 
           ? <ElementoNoEncontrado tipoDato="Nombre" />

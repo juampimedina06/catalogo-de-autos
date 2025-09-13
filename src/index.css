@@ -7,20 +7,20 @@ html{
     --color-secundary: #3b3b3b;
     --color-tercero: #868686;
     --color-claro: #fefefe;
-    --color-primary: #121212;
+    --color-primary: #000000;
     
 }
 
 [data-theme="light"] {
     color-scheme: light;
-    --color-primary: #121212;
+    --color-primary: #000000;
     --color-claro: #fefefe;
 }
 
 [data-theme="dark"] {
     color-scheme: dark;
     --color-primary: #fefefe;
-    --color-claro: #121212;
+    --color-claro: #000000;
 }
 
 
