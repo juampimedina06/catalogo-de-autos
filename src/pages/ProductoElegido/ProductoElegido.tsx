@@ -12,32 +12,31 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import { FreeMode, Pagination } from 'swiper/modules';
 import Producto from "../../components/Producto/Producto";
+import { autosPage } from "../../types/autosType";
 
 const ProductoElegido = () => {
   const { id } = useParams<{ id: string }>();
-  const [todosLosProductos, setTodosLosProductos] = useState<ProductoType[]>([]);
-  const [productosCategoria, setProductosCategoria] = useState<ProductoType[]>([]);
+  const [todosLosProductos, setTodosLosProductos] = useState<autosPage[]>([]);
+  const [productosCategoria, setProductosCategoria] = useState<autosPage[]>([]);
   const [productoElegido, setProductoElegido] = useState<ProductoType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchProducto = async () => {
-      if (!id) return;
-      setLoading(true);
+  if (!id) return;
+  setLoading(true);
 
-      // 🔹 Traer producto por ID desde Firestore
-      const data = await ServicioProducto.obtenerPorId(id);
-      setProductoElegido(data);
+  ServicioProducto.obtenerPorId(Number(id))
+    .then((producto) => {
+      setProductoElegido(producto);
+    })
+    .finally(() => setLoading(false));
 
-      // 🔹 Traer todos para sugerencias
-      const response = await ServicioProducto.obtener();
-      setTodosLosProductos(response);
+  ServicioProducto.obtener()
+    .then((productos) => setTodosLosProductos(productos));
 
-      setLoading(false);
-    };
+}, [id]);
 
-    fetchProducto();
-  }, [id]);
+
 
   useEffect(() => {
     if (productoElegido && todosLosProductos.length > 0) {
@@ -55,7 +54,7 @@ const ProductoElegido = () => {
       return <p className={styles.description}>4 cubiertas nuevas</p>;
     }
   };
-  const mensajeWsp = `Hola! Quiero encargar el auto: ${productoElegido.nombre}`;
+  const mensajeWsp = `Hola leandro! Me interesa el auto: ${productoElegido.nombre}`;
   const linkWsp = `https://wa.me/543516598216?text=${encodeURIComponent(mensajeWsp)}`;
 
   return (
