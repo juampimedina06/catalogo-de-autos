@@ -70,6 +70,8 @@ export default {
   obtenerStock
 };
 
+
+//FIREBASE VERSION
 // import { db } from './firebase-config';
 // import { collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc  } from "firebase/firestore";
 // import { ProductoType } from '../types/ProductoType';

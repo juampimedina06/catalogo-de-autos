@@ -2,6 +2,7 @@ import styles from './Producto.module.css';
 import { CardActionArea} from '@mui/material';
 
 interface PropsProducto{
+  id:number;
   nombre:string;
   precio:number;
   imagenes:string;

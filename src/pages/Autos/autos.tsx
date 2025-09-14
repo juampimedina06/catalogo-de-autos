@@ -56,18 +56,18 @@ const Autos = () => {
     (categoriaSeleccionada === '' || producto.categoria === categoriaSeleccionada)
   );
 
+  console.log("Seccion autos:",filtrarProductos)
+
   if (loading) {
     return <CirculoCargar />;
   }
 
   return (
-    <>
+    <div className={styles.contenedor_autos}>
       <section className={styles.contenedor_buscador}>
-        <div className={styles.contenedor_titulo}>
-        </div>
         <div className={styles.contenedor_buscadores}>
           <BarraBusqueda
-            placeholder="Ingrese aqui el nombre"
+            placeholder="Ingrese aqui el nombre del auto que busca..."
             name="filtrador"
             value={filtrador}
             onChange={handleChange}
@@ -87,18 +87,18 @@ const Autos = () => {
         )}
 
         <div className={styles.producto}>
-          {producto.length === 0 ? (
+          {filtrarProductos.length === 0 ? (
             <ElementoNoEncontrado tipoDato="Nombre" />
           ) : (
-            producto.map((producto) => (
-              <Link to={`producto/${producto.id}`} key={producto.id}>
+            filtrarProductos.map((producto) => (
+              <Link to={`/producto/${producto.id}`} key={producto.id}>
                 <Producto {...producto} />
               </Link>
             ))
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

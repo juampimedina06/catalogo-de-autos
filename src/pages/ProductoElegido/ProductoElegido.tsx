@@ -6,7 +6,6 @@ import ServicioProducto from '../../services/productos'
 import { ProductoType } from "../../types/ProductoType";
 import Titulo from "../../components/Titulo";
 
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
