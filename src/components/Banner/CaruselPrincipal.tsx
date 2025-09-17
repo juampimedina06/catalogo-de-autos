@@ -20,9 +20,9 @@ const CaruselPrincipal = () => {
         modules={[Pagination, Navigation]}
         className={styles.mySwiper}
       >
-        <SwiperSlide><img className={styles.imagenes} src="/img/primera.png" alt="" /></SwiperSlide>
-        <SwiperSlide><img className={styles.imagenes} src="/img/ssegunda.png" alt="" /></SwiperSlide>
-        <SwiperSlide><img className={styles.imagenes} src="/img/tercera.png" alt="" /></SwiperSlide>
+        <SwiperSlide><img className={styles.imagenes} src="public/img/a.jpg" alt="" /></SwiperSlide>
+        <SwiperSlide><img className={styles.imagenes} src="public/img/b.jpg"alt="" /></SwiperSlide>
+        <SwiperSlide><img className={styles.imagenes} src="public/img/c.jpg" alt="" /></SwiperSlide>
       </Swiper> 
   )
 }

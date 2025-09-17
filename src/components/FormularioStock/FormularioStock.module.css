@@ -1,22 +1,20 @@
 .formulario{
-    width: 100%;
     display: flex;
     justify-content: center;
     gap: 1rem;
-    padding: 0 0 0 2.5rem;
 }
-
 
 .input_stock{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 150px;
+    width: 100%;
     padding: 0 0 0 10px;
     background-color: var(--color-primary);
     color: var(--color-claro);
     border-radius: 5px;
 }
+
 
 .input_producto{
     display: flex;
@@ -73,7 +71,7 @@
     display: flex;
     justify-content: center;
     height: 1.8rem;
-    width: 2rem;
+    padding: 0 .6rem;
     border-radius: 3px;
     transition: .3s;
     background-color: #2efd05c9;

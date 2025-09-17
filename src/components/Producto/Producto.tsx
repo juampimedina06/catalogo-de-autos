@@ -2,12 +2,14 @@ import styles from './Producto.module.css';
 import { CardActionArea} from '@mui/material';
 
 interface PropsProducto{
+  id:number;
   nombre:string;
   precio:number;
-  imagen?:string;
+  imagenes:string;
 }
 
-const Producto = ({nombre, precio, imagen}:PropsProducto) => {
+
+const Producto = ({nombre, precio, imagenes}:PropsProducto) => {
   return (
       <div className={styles.producto}>
         <CardActionArea>
@@ -15,7 +17,7 @@ const Producto = ({nombre, precio, imagen}:PropsProducto) => {
             <img
               className={styles.imagen}
               alt="Producto"
-              src={imagen}
+              src={imagenes}
             />
         </div>
         <div className={styles.contenedor_informacion}>

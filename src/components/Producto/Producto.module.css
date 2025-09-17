@@ -1,15 +1,13 @@
 .producto {
   overflow: hidden;
   width: 100%;
-  height: 280px;
+  height:auto;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: start;
   text-align: center;
   position: relative;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -21,19 +19,18 @@
 
 .contenedor_imagen {
   width: 100%;
-  height: 200px;
+  height:auto;
   display: flex;
 }
 
 .imagen {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 
+
 .contenedor_informacion {
-  width: 100%;
-  height: 120px;
 }
 
 .contenedor_titulo {
@@ -47,7 +44,7 @@
   font-size: .8rem;
   font-weight: 500;
   line-height: 21px;
-  color: var(--color-primary);
+  color: rgb(187, 187, 187);
 }
 
 .precio {
@@ -56,6 +53,5 @@
   letter-spacing: 1px;
   color: var(--color-primary);
 }
-
 
 

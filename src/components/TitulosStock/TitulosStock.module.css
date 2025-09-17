@@ -1,15 +1,9 @@
 .referencia_titulo_productos{
-    width: 100%;
+    margin: 0 0 0 5%;
+    width: 85%;
     height: 2rem;
     display: flex;
     align-items: center;
-}
-
-.contenedor_svg{
-    width: 500px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
 }
 
 .contenedor_informacion_productos{

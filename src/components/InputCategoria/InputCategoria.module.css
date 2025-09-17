@@ -2,9 +2,8 @@
     background-color: var(--color-primary);
     color: var(--color-claro);
     border-radius:5px;
-    padding: 0px 10px;
+    width: 100%;
 }
-
 
 .select_producto{
     height: 2.5rem;
@@ -14,4 +13,5 @@
     color: var(--color-claro);
     border-radius:5px;
     padding: 0px 10px;
+    width: 100%;
 }

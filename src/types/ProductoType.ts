@@ -1,11 +1,17 @@
 export  interface ProductoType {
   id?: number;
-  nombre: string;
-  imagen?: string;
-  cantidad: number;
-  categoria: string;
-  precio: number;
-  descripcion?: string;
-  fecha?: string;
-  codigo: string;
+  nombre:string;
+  categoria:string;
+  precio:number;
+  modelo:number;
+  kilometros:number;
+  motor:string;
+  version:string;
+  combustible:string;
+  equipamiento:string;
+  descripcion:string;
+  imagenes:string[];
+  datos_externos:string[];
+  cubiertas:boolean;
+  caja:string;
 }

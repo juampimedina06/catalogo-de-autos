@@ -1,27 +1,156 @@
-import axios from 'axios'
-const baseUrl = 'https://67c6be3c351c081993fe9984.mockapi.io/productos/producto'
-import { ProductoType } from '../types/ProductoType';
+import { autosPage } from "../types/autosType";
+import { ProductoType } from "../types/ProductoType";
+import { autoStock } from "../types/stockType";
+import { supabase } from "./supabase-config";
 
-const obtener = () : Promise<ProductoType[]> => {
-  const request = axios.get<ProductoType[]>(baseUrl);
-  return request.then(response => response.data);
-}
+const obtenerStock = async (): Promise<autoStock[]> => {
+  const { data, error } = await supabase
+    .from("autos")
+    .select("id, nombre, modelo, precio, kilometros");
 
-const crear = (newObject : ProductoType): Promise<ProductoType[]> => {
-  const request = axios.post<ProductoType[]>(baseUrl, newObject)
-  return request.then(response => response.data)
-}
+  if (error) throw error;
+  return data ?? []; 
+};
 
-const actualizar = (id : number, newObject : ProductoType) : Promise<ProductoType> => {
-  const request = axios.put<ProductoType>(`${baseUrl}/${id}`, newObject)
-  return request.then(response => response.data)
-}
+const crear = async (auto : ProductoType) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .insert([auto]);
 
-const eliminar = (id : number ) : Promise<void> => {
-  const request = axios.delete<ProductoType>(`${baseUrl}/${id}`)
-  return request.then(response => {
-    console.log(response.data)
-  })
-}
+  if (error) throw error;
+  return data;
+};
 
-export default { obtener, crear, actualizar, eliminar }
+const obtener = async (): Promise<autosPage[]> => {
+const { data, error } = await supabase
+  .from("autos_preview")
+  .select("*");
+
+  if (error) throw error;
+  return (data ?? []) as unknown as autosPage[];
+};
+
+const obtenerPorId = async (id : number) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) throw error;
+  return data;
+};
+
+const editar = async (id : number, auto : any) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .update(auto)
+    .eq("id", id);
+
+  if (error) throw error;
+  return data;
+};
+
+export const eliminar = async (id : number) => {
+  const { data, error } = await supabase
+    .from("autos")
+    .delete()
+    .eq("id", id);
+
+  if (error) throw error;
+  return data;
+};
+
+export default {
+  crear,
+  obtener,
+  obtenerPorId,
+  editar,
+  eliminar,
+  obtenerStock
+};
+
+
+//FIREBASE VERSION
+// import { db } from './firebase-config';
+// import { collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc  } from "firebase/firestore";
+// import { ProductoType } from '../types/ProductoType';
+
+// const productosRef = collection(db, "autos");
+
+// const crear = async (producto: ProductoType) => {
+//   try {
+//     const docRef = await addDoc(productosRef, {
+//       ...producto,
+//       creadoEn: new Date()
+//     });
+//     return { id: docRef.id, ...producto };
+//   } catch (error) {
+//     console.error("Error al crear producto en Firestore", error);
+//     throw error;
+//   }
+// };
+
+// const obtener = async (): Promise<ProductoType[]> => {
+//   try {
+//     const snapshot = await getDocs(productosRef);
+//     const productos: ProductoType[] = snapshot.docs.map(doc => ({
+//       id: doc.id,
+//       ...(doc.data() as Omit<ProductoType, "id">)
+//     }));
+//     return productos;
+//   } catch (error) {
+//     console.error("Error al obtener productos de Firestore", error);
+//     return [];
+//   }
+// }
+
+// const obtenerPorId = async (id: string): Promise<ProductoType | null> => {
+//   try {
+//     const docRef = doc(db, "autos", id);
+//     const docSnap = await getDoc(docRef);
+
+//     if (docSnap.exists()) {
+//       return { id: docSnap.id, ...(docSnap.data() as Omit<ProductoType, "id">) };
+//     } else {
+//       console.warn("El documento no existe");
+//       return null;
+//     }
+//   } catch (error) {
+//     console.error("Error al obtener producto por id", error);
+//     return null;
+//   }
+// };
+
+// const editar = async (id: string, producto: Partial<ProductoType>) => {
+//   try {
+//     const docRef = doc(db, "autos", id);
+//     await updateDoc(docRef, {
+//       ...producto,
+//       actualizadoEn: new Date(),
+//     });
+//     return true;
+//   } catch (error) {
+//     console.error("Error al actualizar producto en Firestore", error);
+//     return false;
+//   }
+// };
+
+// const eliminar = async (id: string) => {
+//   try {
+//     const docRef = doc(db, "autos", id);
+//     await deleteDoc(docRef);
+//     return true;
+//   } catch (error) {
+//     console.error("Error al eliminar producto en Firestore", error);
+//     return false;
+//   }
+// };
+
+// export default {
+//   crear,
+//   obtener,
+//   obtenerPorId,
+//   editar,
+//   eliminar
+// };

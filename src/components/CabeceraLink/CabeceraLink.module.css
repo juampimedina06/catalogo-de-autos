@@ -8,13 +8,13 @@
   font-weight: 650;
   width: auto;
   height: 34px;
-  font-size: 12px;
+  font-size: 14px;
   transition: all 0.3s ease-in-out;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  text-transform: uppercase;
+  font-weight: 450;
 }
 
 .button::before {
@@ -22,6 +22,8 @@
   position: absolute;
   bottom: 0;
   transition: all 0.3s ease-in-out;
+    font-weight: 450;
+
 }
 
 .button::after {
@@ -33,6 +35,8 @@
   height: 2px;
   background: var(--color-primary);
   transition: width 0.5s ease;
+  font-weight: 450;
+
 }
 
 .button:hover::after {
@@ -49,14 +53,14 @@
 
 .activeButton {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 14px;
   border: none;
   font-size: 12px;
   border-radius: 5px;
-  font-weight: 650;
   transition: all 0.3s ease-in-out;
   position: relative;
   color: var(--color-primary);
+  font-weight: 500;
 }
 
 .activeButton::after {
@@ -67,6 +71,7 @@
   width: 100%;
   height: 2px;
   background: var(--color-primary);
+  font-weight: 500;
 }
 
 

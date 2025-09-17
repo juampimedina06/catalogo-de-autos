@@ -4,10 +4,12 @@
     width: 100%;
     gap: 1rem;
     height: auto;
+    padding: 0 1rem ;
 }
 
 .contenedor_inputs{
   display: flex;
+  flex-direction: row;
   width: 100%;
   gap: 1rem;
 }
@@ -18,33 +20,63 @@
 
 .label{
   font-size: .8rem;
+  color: var(--color-primary);
 }
 
 .boton_formulario {
   display: inline-block;
   padding: 12px 24px;
-  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  border: 1px solid #fff;
   color: #ffffff;
   font-weight: 600;
   font-size: 1rem;
-  border: none;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
 }
 
-
-.boton_formulario:hover {
-  background: linear-gradient(135deg, #4338ca, #4f46e5);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+  font-size: 16px;
+  user-select: none;
+  color: var(--color-primary);
 }
 
-.boton_formulario:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2);
+.checkbox input {
+  display: none;
 }
 
+.checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.2s ease;
+}
 
+.checkbox input:checked + .checkmark {
+  background-color: #000000;
+  border-color: #110dfd;
+}
+
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox input:checked + .checkmark::after {
+  display: block;
+}

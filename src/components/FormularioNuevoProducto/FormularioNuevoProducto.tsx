@@ -1,177 +1,231 @@
-import { useEffect, useState } from "react"
-import InputStock from "../FormularioStock/InputStock"
-import InputCategoria from "../InputCategoria/InputCategoria"
-import servicioProductos from "../../services/productos"
-import styles from "./FormularioNuevoProducto.module.css"
+import { useEffect, useState } from "react";
+import InputStock from "../FormularioStock/InputStock";
+import InputCategoria from "../InputCategoria/InputCategoria";
+import servicioProductos from "../../services/productos";
+import styles from "./FormularioNuevoProducto.module.css";
 import type { FormEvent } from "react";
 
-
 interface PropsFormularioNuevoProducto {
-  onSubmit: (e:FormEvent<HTMLFormElement>) => void;
+onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  nameNombre:string; valueNombre:string;
-  namePrecio:string; valuePrecio:number;
-  nameFecha:string; valueFecha:string;
-  nameCodigo:string; valueCodigo:string;
-  nameDescripcion:string; valueDescripcion:string;
-  nameCategoria:string; valueCategoria:string;
-  nameCantidad:string; valueCantidad:number;
-  nameImagenPrincipal:string; valueImagenPrincipal:string;
+
+  nombre: string;
+  categoria: string;
+  precio: number | string; 
+  modelo: number | string;
+  kilometros: number | string;
+  motor: string;
+  version: string;
+  combustible: string;
+  equipamiento: string;
+  descripcion: string;
+  imagenes: string[];
+  datos_externos: string[];
+  cubiertas: boolean;
+  caja: string;
 }
 
 const FormularioNuevoProducto = ({
-    onSubmit, 
-    onChange,
-    nameNombre, valueNombre,
-    namePrecio, valuePrecio,
-    nameFecha, valueFecha,
-    nameCodigo, valueCodigo,
-    nameDescripcion, valueDescripcion,
-    nameCategoria, valueCategoria,
-    nameCantidad, valueCantidad,
-    nameImagenPrincipal, valueImagenPrincipal,
-}:PropsFormularioNuevoProducto) => {
+  onSubmit,
+  onChange,
+  nombre,
+  categoria,
+  precio,
+  modelo,
+  kilometros,
+  motor,
+  version,
+  combustible,
+  equipamiento,
+  descripcion,
+  imagenes,
+  datos_externos,
+  cubiertas,
+  caja,
+}: PropsFormularioNuevoProducto) => {
 
-  const [categorias, setCategorias] = useState([valueCategoria])
-  
-    useEffect(() =>{
-    servicioProductos
-    .obtener()
-    .then(response =>{
-        const categorias = [...new Set(response.map(producto => producto.categoria))];
-        setCategorias(categorias);
-    })
-    },[])
 
   return (
     <form className={styles.formulario} onSubmit={onSubmit}>
       <div className={styles.contenedor_inputs}>
         <div className={styles.contenedor_input}>
-          <label className={styles.label}>Nombre del producto</label>
-          <InputStock 
-          name={nameNombre}
-          value={valueNombre}
-          onChange={onChange}
-          type="text"
-          placeholder="Nombre del Pruducto"
-          clase="producto"
-          />
-        </div>
-        <div className={styles.contenedor_input}>
-          <label className={styles.label}>Cantidad del producto</label>
-          <InputStock 
-            name={namePrecio}
-            value={valuePrecio}
-            onChange={onChange}
-            type="number"
-            placeholder="Cantidad del producto"
-            clase="producto"
-          />
-        </div>
-      </div>
-
-      <div className={styles.contenedor_inputs}>
-        <div className={styles.contenedor_input}>
-          <label className={styles.label}>Fecha de hoy</label>
-          <InputStock 
-          name={nameFecha}
-          value={valueFecha}
-          onChange={onChange}
-          type="date"
-          clase="producto"
-          placeholder="Fecha de hoy"
-          />
-        </div>
-      <div className={styles.contenedor_input}>
-          <label className={styles.label}>Codigo del producto</label>
-          <InputStock 
-          name={nameCodigo}
-          value={valueCodigo}
-          onChange={onChange}
-          type="text"
-          placeholder="Codigo del producto"
-          clase="producto"
-          />
-        </div>
-      </div>
-
-      <div className={styles.contenedor_inputs}>
-        <div className={styles.contenedor_input}>
-          <label className={styles.label}>Descripcion del producto</label>
-          <InputStock 
-            name={nameDescripcion}
-            value={valueDescripcion}
+          <label className={styles.label}>Nombre del Auto</label>
+          <InputStock
+            name="nombre"
+            value={nombre}
             onChange={onChange}
             type="text"
-            placeholder="Descripcion del producto"
+            placeholder="Nombre del Auto"
             clase="producto"
           />
         </div>
         <div className={styles.contenedor_input}>
-          <label className={styles.label}>Categoria del producto</label>          
-          <InputStock 
-            name={nameCantidad}
-            value={valueCantidad}
+          <label className={styles.label}>Combustible</label>
+          <InputStock
+            name="combustible"
+            value={combustible}
             onChange={onChange}
-            type="number"
-            placeholder={nameCantidad}
+            type="text"
+            placeholder="Tipo de Combustible"
             clase="producto"
           />
         </div>
       </div>
-      <label className={styles.label}>Categoria del producto</label>
-      <InputCategoria 
-        name={nameCategoria}
-        value={valueCategoria}
-        handleChange={onChange} 
-        categorias={categorias}
-        clase="producto"
-      />
-      <label className={styles.label}>Imagen del producto</label>
-      <InputStock 
-        name={nameImagenPrincipal}
-        value={valueImagenPrincipal}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen principal"
-      />
-      <button type="submit" className={styles.boton_formulario}>Enviar</button>
+
+      <div className={styles.contenedor_inputs}>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Categoría</label>
+          <InputCategoria
+            name="categoria"
+            value={categoria}
+            handleChange={onChange}
+            clase="producto"
+          />
+        </div>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Precio</label>
+          <InputStock
+            name="precio"
+            value={precio}
+            onChange={onChange}
+            type="number"
+            placeholder="Precio del Auto"
+            clase="producto"
+          />
+        </div>
+      </div>
+
+      <div className={styles.contenedor_inputs}>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Modelo</label>
+          <InputStock
+            name="modelo"
+            value={modelo}
+            onChange={onChange}
+            type="number"
+            placeholder="Año del Modelo"
+            clase="producto"
+          />
+        </div>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Kilómetros</label>
+          <InputStock
+            name="kilometros"
+            value={kilometros}
+            onChange={onChange}
+            type="number"
+            placeholder="Kilometraje"
+            clase="producto"
+          />
+        </div>
+      </div>
+
+      <div className={styles.contenedor_inputs}>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Motor</label>
+          <InputStock
+            name="motor"
+            value={motor}
+            onChange={onChange}
+            type="text"
+            placeholder="Motor del Auto"
+            clase="producto"
+          />
+        </div>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Versión</label>
+          <InputStock
+            name="version"
+            value={version}
+            onChange={onChange}
+            type="text"
+            placeholder="Versión"
+            clase="producto"
+          />
+        </div>
+      </div>
+
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Equipamiento</label>
+          <InputStock
+            name="equipamiento"
+            value={equipamiento}
+            onChange={onChange}
+            type="text"
+            placeholder="Equipamiento adicional"
+            clase="producto"
+          />
+        </div>
+
+        
+      <div className={styles.contenedor_inputs}>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Datos externos</label>
+          <InputStock
+            name="datos_externos"
+            value={datos_externos}
+            onChange={onChange}
+            type="text"
+            placeholder="Datos adicionales"
+            clase="producto"
+          />
+        </div>
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Caja</label>
+          <InputStock
+            name="caja"
+            value={caja}
+            onChange={onChange}
+            type="text"
+            placeholder="Caja de cambios"
+            clase="producto"
+          />
+        </div>
+      </div>
+
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Descripción</label>
+          <InputStock
+            name="descripcion"
+            value={descripcion}
+            onChange={onChange}
+            type="text"
+            placeholder="Descripción"
+            clase="producto"
+          />
+        </div>
+
+        <div className={styles.contenedor_input}>
+          <label className={styles.label}>Imágenes</label>
+          <input
+            name="imagenes"
+            onChange={onChange}
+            type="file"
+            multiple
+            accept="image/*"
+          />
+        </div>
+
+        <div className={styles.contenedor_input}>
+          <label className={styles.checkbox}>
+          <input
+            type="checkbox"
+            name="cubiertas"
+            checked={cubiertas}
+            onChange={onChange}
+          />
+          <span className={styles.checkmark}></span>
+          Cubiertas
+        </label>
+        </div>
+
+
+      <button type="submit" className={styles.boton_formulario}>
+        Enviar
+      </button>
     </form>
-  )
-}
+  );
+};
 
-export default FormularioNuevoProducto
 
-{/* <InputStock 
-        name={nameImangenDos}
-        value={valueImagenDos}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImangenTres}
-        value={valueImagenTres}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImangenCuatro}
-        value={valueImagenCuatro}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      />
-      <InputStock 
-        name={nameImagenCinco}
-        value={valueImagenCinco}
-        onChange={onChange}
-        type="file"
-        clase="file"
-        tipoImagen="Subir Imagen"
-      /> */}
+export default FormularioNuevoProducto;

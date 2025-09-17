@@ -1,20 +1,48 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 export const useForm = <T extends object>(initState: T) => {
-    const [ formulario, setFormulario ] = useState(initState)
+  const [formulario, setFormulario] = useState(initState);
 
-        const handleChange = ({ target } : ChangeEvent<HTMLInputElement>) => {
-            const {name, value} = target;
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, type, value, checked, files } = e.target as HTMLInputElement;
 
-            setFormulario({
-                ...formulario,
-                [ name ]: value
-            })
-        }
+    if (type === "file" && files) {
+      const fileArray = Array.from(files);
 
-        return{
-            handleChange,
-            ...formulario,
-            setFormulario
-        }
-}
+      // Convertimos cada archivo a base64
+      const readers = fileArray.map((file) => {
+        return new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result as string);
+          reader.onerror = reject;
+          reader.readAsDataURL(file); // convierte en base64
+        });
+      });
+
+      Promise.all(readers).then((base64Images) => {
+        setFormulario((prev) => ({
+          ...prev,
+          [name]: base64Images, // guardamos como string[]
+        }));
+      });
+    } else if (type === "checkbox") {
+      setFormulario((prev) => ({
+        ...prev,
+        [name]: checked,
+      }));
+    } else {
+      setFormulario((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  return {
+    handleChange,
+    ...formulario,
+    setFormulario,
+  };
+};

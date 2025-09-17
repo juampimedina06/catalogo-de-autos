@@ -1,94 +1,141 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CirculoCargar from "../../components/CirculoCargar/CirculoCargar";
 import styles from "./ProductoElegido.module.css";
+import ServicioProducto from '../../services/productos'
+import { ProductoType } from "../../types/ProductoType";
+import Titulo from "../../components/Titulo";
 
-interface ProductoElegido {
-  nombre: string;
-  imagen: string;
-  imagen_one: string;
-  imagen_two: string;
-  imagen_three: string;
-  imagen_four: string;
-  descripcion: string;
-  categoria: string;
-  precio: string;
-}
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import { FreeMode, Pagination } from 'swiper/modules';
+
+
+
+import Producto from "../../components/Producto/Producto";
+import { autosPage } from "../../types/autosType";
 
 const ProductoElegido = () => {
-  const {id} = useParams<string>();
-  const [productoElegido, setProductoElegido] = useState<ProductoElegido | null>(null);
+  const { id } = useParams<{ id: string }>();
+  const [todosLosProductos, setTodosLosProductos] = useState<autosPage[]>([]);
+  const [productosCategoria, setProductosCategoria] = useState<autosPage[]>([]);
+  const [productoElegido, setProductoElegido] = useState<ProductoType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    fetch(`https://67c6be3c351c081993fe9984.mockapi.io/productos/producto/${id}`)
-      .then((res) => res.json())
-      .then((data : ProductoElegido ) => {
-        setProductoElegido(data);
-        setLoading(false);
-      });
-  }, [id]);
+  if (!id) return;
+  setLoading(true);
 
-  // if (loading) return <CirculoCargar />;
+  ServicioProducto.obtenerPorId(Number(id))
+    .then((producto) => {
+      setProductoElegido(producto);
+    })
+    .finally(() => setLoading(false));
+
+  ServicioProducto.obtener()
+    .then((productos) => setTodosLosProductos(productos));
+
+}, [id]);
+
+  useEffect(() => {
+    if (productoElegido && todosLosProductos.length > 0) {
+      const autosCategoria = todosLosProductos.filter(
+        (auto) => auto.categoria === productoElegido.categoria && auto.id !== productoElegido.id
+      );
+      setProductosCategoria(autosCategoria);
+    }
+  }, [productoElegido, todosLosProductos]);
+
   if (loading || !productoElegido) return <CirculoCargar />;
 
+  console.log(productoElegido)
 
-  const mensajeWsp = `Hola! Quiero encargar el producto: ${productoElegido.nombre}`;
+  const estadoCubiertas = () => {
+    if (productoElegido.cubiertas) {
+      return <p className={styles.description}>4 cubiertas nuevas</p>;
+    }
+  };
+  const mensajeWsp = `Hola leandro! Me interesa el auto: ${productoElegido.nombre}`;
   const linkWsp = `https://wa.me/543516598216?text=${encodeURIComponent(mensajeWsp)}`;
 
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.productContainer}>
         <div className={styles.gallery}>
-  <img
-    src={productoElegido.imagen_one}
-    alt="Vista 1"
-    className={styles.thumbnail}
-  />
-  <img
-    src={productoElegido.imagen_two}
-    alt="Vista 2"
-    className={styles.thumbnail}
-  />
-  <img
-    src={productoElegido.imagen_three}
-    alt="Vista 3"
-    className={styles.thumbnail}
-  />
-  <img
-    src={productoElegido.imagen_four}
-    alt="Vista 4"
-    className={styles.thumbnail}
-  />
-</div>
+        {productoElegido.imagenes.slice(1, 14).map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Vista ${index + 1}`}
+            className={styles.thumbnail}
+          />
+        ))}
+        </div>
         <div className={styles.imageWrapper}>
           <img
-            src={productoElegido.imagen}
+            src={productoElegido.imagenes[0]}
             alt={productoElegido.nombre}
             className={styles.image}
           />
         </div>
-
         <div className={styles.info}>
           <p className={styles.breadcrumbs}>Inicio &gt; Categoría &gt; {productoElegido.categoria}</p>
-          <h1 className={styles.title}>{productoElegido.nombre}</h1>
-          <p className={styles.price}>${productoElegido.precio}</p>
-          <p className={styles.delivery}>Entrega todos los viernes</p>
-          <p className={styles.description}>{productoElegido.descripcion}</p>
-          <div className={styles.actions}>
-            <a
+          
+          <div>
+            <h1 className={styles.title}>{productoElegido.nombre}</h1>
+            <p className={styles.price}>${productoElegido.precio}</p>
+          </div>
+          <a
               href={linkWsp}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.whatsappBtn}
             >
-              Encargar por WhatsApp
+              Consultar por WhatsApp
             </a>
+          <div className={styles.actions}>
+            <p className={styles.description}>{productoElegido.nombre} modelo {productoElegido.modelo}. {productoElegido.kilometros} kilometros</p>
+            <p className={styles.description}>Motor {productoElegido.motor} {productoElegido.combustible}</p>
+            <p className={styles.description}>Version: {productoElegido.version}</p>
+            <p className={styles.description}>{productoElegido.caja}</p> 
+            {estadoCubiertas()}
           </div>
+          <p className={styles.description}>{productoElegido.equipamiento}</p>
+          <p className={styles.description}>{productoElegido.descripcion}</p>
         </div>
       </div>
+
+      <div className={styles.contenedor_otros_autos}>
+        <Titulo titulo={`Otros autos ${productoElegido.categoria}`} />
+        {productosCategoria.length === 0 ? (
+          <p className={styles.parrafo_sin_productos}>Solo tenemos ese auto de la marca {productoElegido.categoria}</p>
+          ) : (
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={30}
+            freeMode={true}
+            modules={[FreeMode, Pagination]}
+            className={styles.swyper}
+            >
+        {productosCategoria.map((producto) => (
+          <SwiperSlide className={styles.swiperslide} key={producto.id}>
+            <Link to={`/producto/${producto.id}`}>
+              <Producto {...producto} />
+            </Link>
+          </SwiperSlide>
+        ))}
+    </Swiper>
+  )}
+</div>
+
+
+
     </div>
   );
 };
 
 export default ProductoElegido;
+
+

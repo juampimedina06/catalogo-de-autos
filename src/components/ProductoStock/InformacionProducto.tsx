@@ -7,7 +7,7 @@ interface PropsInformacionProducto{
 
 const InformacionProducto = ({productoInformacion, texto}:PropsInformacionProducto) => {
   return (
-        <div className={styles.contenedor_informacion_productos}><p className={styles.informacion_producto}>{texto}{productoInformacion}</p></div>  
+        <div className={styles.contenido_informacion_productos}><p className={styles.informacion_producto}>{texto}{productoInformacion}</p></div>  
     )
 }
 
