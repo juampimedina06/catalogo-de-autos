@@ -7,10 +7,13 @@ import { ProductoType } from "../../types/ProductoType";
 import Titulo from "../../components/Titulo";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 import 'swiper/css';
 import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
+
+
+
 import Producto from "../../components/Producto/Producto";
 import { autosPage } from "../../types/autosType";
 
@@ -36,8 +39,6 @@ const ProductoElegido = () => {
 
 }, [id]);
 
-
-
   useEffect(() => {
     if (productoElegido && todosLosProductos.length > 0) {
       const autosCategoria = todosLosProductos.filter(
@@ -48,6 +49,8 @@ const ProductoElegido = () => {
   }, [productoElegido, todosLosProductos]);
 
   if (loading || !productoElegido) return <CirculoCargar />;
+
+  console.log(productoElegido)
 
   const estadoCubiertas = () => {
     if (productoElegido.cubiertas) {
@@ -61,26 +64,14 @@ const ProductoElegido = () => {
     <div className={styles.pageWrapper}>
       <div className={styles.productContainer}>
         <div className={styles.gallery}>
+        {productoElegido.imagenes.slice(1, 14).map((img, index) => (
           <img
-            src={productoElegido.imagenes[1]}
-            alt="Vista 1"
+            key={index}
+            src={img}
+            alt={`Vista ${index + 1}`}
             className={styles.thumbnail}
           />
-          <img
-            src={productoElegido.imagenes[2]}
-            alt="Vista 2"
-            className={styles.thumbnail}
-          />
-          <img
-            src={productoElegido.imagenes[3]}
-            alt="Vista 3"
-            className={styles.thumbnail}
-          />
-          <img
-            src={productoElegido.imagenes[4]}
-            alt="Vista 4"
-            className={styles.thumbnail}
-          />
+        ))}
         </div>
         <div className={styles.imageWrapper}>
           <img
@@ -111,36 +102,40 @@ const ProductoElegido = () => {
             <p className={styles.description}>{productoElegido.caja}</p> 
             {estadoCubiertas()}
           </div>
+          <p className={styles.description}>{productoElegido.equipamiento}</p>
           <p className={styles.description}>{productoElegido.descripcion}</p>
         </div>
       </div>
+
       <div className={styles.contenedor_otros_autos}>
         <Titulo titulo={`Otros autos ${productoElegido.categoria}`} />
-        <Swiper
-        slidesPerView={4}
-        spaceBetween={30}
-        freeMode={true}
-        modules={[FreeMode, Pagination]}
-        className={styles.swiper}
-      >
         {productosCategoria.length === 0 ? (
-          <p>Solo tenemos ese auto de la marca {productoElegido.categoria} </p>
-        ) : (
-          productosCategoria.map((producto) => (
-                <SwiperSlide className={styles.swiperslide}>
-                  <Link to={`/producto/${producto.id}`} key={producto.id}>
-                    <Producto {...producto} />
-                  </Link>
-                </SwiperSlide>
-            ))
-        )} 
-      </Swiper>
-      </div>
+          <p className={styles.parrafo_sin_productos}>Solo tenemos ese auto de la marca {productoElegido.categoria}</p>
+          ) : (
+          <Swiper
+            slidesPerView="auto"
+            spaceBetween={30}
+            freeMode={true}
+            modules={[FreeMode, Pagination]}
+            className={styles.swyper}
+            >
+        {productosCategoria.map((producto) => (
+          <SwiperSlide className={styles.swiperslide} key={producto.id}>
+            <Link to={`/producto/${producto.id}`}>
+              <Producto {...producto} />
+            </Link>
+          </SwiperSlide>
+        ))}
+    </Swiper>
+  )}
+</div>
+
+
+
     </div>
   );
 };
 
 export default ProductoElegido;
-
 
 
