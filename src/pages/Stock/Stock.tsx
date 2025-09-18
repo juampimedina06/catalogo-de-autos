@@ -14,7 +14,6 @@ interface dataForm {
   filtrador: string;
 }
 
-
 const Stock = () => {
   const [producto, setProducto] = useState<autoStock[]>([])
   const [loading, setLoading] = useState<boolean>(true)
@@ -42,8 +41,8 @@ const Stock = () => {
   }
 
   return (
-    <>
-    <section className={styles.contenedor_productos}>
+    <section className={styles.contenedor_stock}>
+    <div className={styles.stock}>
       <BarraBusqueda
         placeholder='Introduzca el nombre de auto que quiere buscar...' 
         value={filtrador}
@@ -66,9 +65,9 @@ const Stock = () => {
           </>
       )
       }
-    </section>
+    </div>
     <Notificacion mensaje={tipoNotificacion} clase={notificacionPersona}  />
-    </>
+    </section>
   )
 }
 
