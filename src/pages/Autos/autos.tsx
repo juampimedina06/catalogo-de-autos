@@ -56,8 +56,6 @@ const Autos = () => {
     (categoriaSeleccionada === '' || producto.categoria === categoriaSeleccionada)
   );
 
-  console.log("Seccion autos:",filtrarProductos)
-
   if (loading) {
     return <CirculoCargar />;
   }

@@ -14,7 +14,6 @@ interface dataForm {
   filtrador: string;
 }
 
-
 const Stock = () => {
   const [producto, setProducto] = useState<autoStock[]>([])
   const [loading, setLoading] = useState<boolean>(true)

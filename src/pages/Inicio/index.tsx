@@ -22,7 +22,6 @@ const Inicio = () => {
       });
   }, []);
 
-  console.log(producto)
 
   if (loading) {
     return <CirculoCargar />;
