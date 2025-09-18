@@ -73,12 +73,20 @@ const ProductoElegido = () => {
           />
         ))}
         </div>
-        <div className={styles.imageWrapper}>
-          <img
-            src={productoElegido.imagenes[0]}
-            alt={productoElegido.nombre}
-            className={styles.image}
-          />
+        <div className={styles.contenedor_imagen_principal}>
+          <Swiper className={styles.swiper_imagenes}>
+            {productoElegido.imagenes.map((img,index) =>(
+                <SwiperSlide className={styles.swiper_imagen}>
+                <img
+                  key={index}
+                  src={img}
+                  alt={productoElegido.nombre}
+                  className={styles.image}
+                  />
+            </SwiperSlide>
+            ))}
+          </Swiper>
+          
         </div>
         <div className={styles.info}>
           <p className={styles.breadcrumbs}>Inicio &gt; Categoría &gt; {productoElegido.categoria}</p>
@@ -102,7 +110,7 @@ const ProductoElegido = () => {
             <p className={styles.description}>{productoElegido.caja}</p> 
             {estadoCubiertas()}
           </div>
-          <p className={styles.description}>{productoElegido.equipamiento}</p>
+          <p className={styles.description}>Equipamiento: {productoElegido.equipamiento}</p>
           <p className={styles.description}>{productoElegido.descripcion}</p>
         </div>
       </div>

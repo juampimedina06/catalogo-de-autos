@@ -33,8 +33,8 @@ const Pie = () => {
           <div className={styles.seccion}>
             <h4 className={styles.titulo}>Ayuda</h4>
             <ul className={styles.links}>
-              <li><a href="/PreguntasFrecuentes" target="_blank">Preguntas frecuentes</a></li>
-              <li><a href="/TerminosCondiciones" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a></li>
+              <li><a>Preguntas frecuentes</a></li>
+              <li><a>Términos y Condiciones</a></li>
               <li><a>Política de privacidad</a></li>
             </ul>
           </div>
@@ -43,18 +43,18 @@ const Pie = () => {
             <h4 className={styles.titulo}>Suscribite</h4>
             <p className={styles.descripcion}>Recibí ofertas y novedades antes que nadie.</p>
             <form className={styles.form}>
-              <input type="email" placeholder="Tu email" className={styles.input} />
-              <button type="submit" className={styles.boton}><MdEmail /></button>
+              <input  placeholder="Tu email" className={styles.input} />
+              <a className={styles.boton}><MdEmail /></a>
             </form>
           </div>
         </div>
 
         <div className={styles.bottom}>
-          <div className={styles.pagos}>
+          {/* <div className={styles.pagos}>
             <FaCcVisa />
             <FaCcMastercard />
             <FaCcPaypal />
-          </div>
+          </div> */}
 
           <p className={styles.texto_derechos}>© 2025 A86 — Todos los derechos reservados.</p>
 

@@ -1,5 +1,5 @@
 .loading {
-    background-color: var(--color-claro);
+    background-color: transparent;
     height: 100vh;
     width: 100%;
     display: flex;

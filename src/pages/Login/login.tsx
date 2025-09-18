@@ -42,7 +42,7 @@ const LoginForm: React.FC = () => {
       {user ?
       (
         <div className={styles.registro_exitoso}>
-          <h3 className={styles.registro_titulo}>Su Inicio fue exitoso</h3>
+          <h3 className={styles.registro_titulo}>Inicio de sesion exitoso</h3>
           <img className={styles.registro_imagen} src="img/okey.png" alt="" />
         </div>
       )
