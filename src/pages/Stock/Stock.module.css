@@ -1,17 +1,14 @@
-.contenedor_barra{
-    width: 90%;
-}
-
-.contenedor_productos{
-    min-height: 500px;
-    height: auto;
+.contenedor_stock{
+    width: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    width: 95%;
+    align-items: center;
 }
 
-
+.stock{
+    width: 98%;
+}
 
 
 

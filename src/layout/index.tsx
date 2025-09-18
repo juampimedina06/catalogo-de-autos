@@ -10,7 +10,7 @@ type Props = {
 
 export default function Layout({ children }: Props) {
   return (
-    <div className="">
+    <div className={styles.layout}>
       <BotonWasap />
         <Cabecera />
 
