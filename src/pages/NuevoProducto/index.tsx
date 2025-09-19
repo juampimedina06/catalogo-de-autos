@@ -2,25 +2,15 @@ import FormularioNuevoProducto from "../../components/FormularioNuevoProducto/Fo
 import styles from "./NuevoProducto.module.css";
 import servicioProductos from "../../services/productos";
 import { useForm } from "../../hooks/useForm";
+import { ProductoType } from "../../types/ProductoType";
+import Notificacion from "../../components/Notificacion/Notificacion";
+import { useState } from "react";
 
-interface FormAuto {
-  nombre: string;
-  categoria: string;
-  precio: number;
-  modelo: number;
-  kilometros: number;
-  motor: string;
-  version: string;
-  combustible: string;
-  equipamiento: string;
-  descripcion: string;
-  imagenes: string[]; 
-  datos_externos: string[]; 
-  cubiertas: boolean;
-  caja: string;
-}
+
 
 const NuevoProducto = () => {
+  const [mensaje, setMensaje] = useState<string | null>(null)
+
   const {
     handleChange,
     nombre,
@@ -37,12 +27,12 @@ const NuevoProducto = () => {
     datos_externos,
     cubiertas,
     caja,
-  } = useForm<FormAuto>({
+  } = useForm<ProductoType>({
     nombre: "",
     categoria: "",
-    precio: 0,
+    precio: "",
     modelo: 0,
-    kilometros: 0,
+    kilometros: "",
     motor: "",
     version: "",
     combustible: "",
@@ -56,7 +46,6 @@ const NuevoProducto = () => {
 
   const subirProducto = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
 
     const nuevoAuto = {
       nombre,
@@ -75,15 +64,22 @@ const NuevoProducto = () => {
       caja,
     };
 
-
     servicioProductos
       .crear(nuevoAuto)
       .then((respuesta) => {
         console.log("producto subido con exito", respuesta);
-        window.location.href = "/Stock";
+        setMensaje("Producto subido con exito")
+        setTimeout(() =>{
+          setMensaje(null)
+          window.location.href = "/Stock";
+        },1000)
       })
       .catch((error) => {
         console.log("error al subir el producto", error);
+        setMensaje("No se pudo subir el producto")
+        setTimeout(() =>{
+          setMensaje(null)
+        },1000)
       });
   };
 
@@ -110,6 +106,7 @@ const NuevoProducto = () => {
           caja={caja}
         />
       </div>
+      <Notificacion mensaje={mensaje} clase={mensaje ? "Correcta" : "incorrecta"} />
     </section>
   );
 };

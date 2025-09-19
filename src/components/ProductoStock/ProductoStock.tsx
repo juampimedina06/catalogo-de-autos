@@ -9,8 +9,8 @@ import { autoStock } from '../../types/stockType'
 interface FormData{
   nuevoNombre:string;
   nuevoModelo: number;
-  nuevoPrecio:number;
-  nuevoKilometros:number;
+  nuevoPrecio:string;
+  nuevoKilometros:string;
 }
 
 interface PropsProductoStock {
@@ -37,13 +37,12 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
   const {handleChange, nuevoNombre, nuevoModelo, nuevoPrecio, nuevoKilometros, setFormulario} = useForm<FormData>({
   nuevoNombre: '',
   nuevoModelo:0,
-  nuevoPrecio:0,
-  nuevoKilometros:0
+  nuevoPrecio:'',
+  nuevoKilometros:''
   })
 
   const actualizarProducto = (e:React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-
 
       const objetoProducto = {
         id:editar!,

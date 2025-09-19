@@ -6,8 +6,8 @@ interface PropsFormularioStock{
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   nameNombre:string; valueNombre:string;
   nameModelo:string; valueModelo:number;
-  namePrecio:string; valuePrecio:number;
-  nameKilometros:string; valueKilometros:number;
+  namePrecio:string; valuePrecio:string;
+  nameKilometros:string; valueKilometros:string;
 }
 
 const FormularioStock = ({
@@ -40,14 +40,14 @@ const FormularioStock = ({
         name={namePrecio}
         value={valuePrecio}
         onChange={onChange}
-        type="number"
+        type="text"
         clase="stock"
       />
       <InputStock 
         name={nameKilometros}
         value={valueKilometros}
         onChange={onChange}
-        type="number"
+        type="text"
         clase="stock"
       />
       <button type="submit" className={styles.boton_formulario}>

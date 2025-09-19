@@ -63,7 +63,7 @@ const Stock = () => {
               tipoNotificacion={setTipoNotificacion}
             />
           </>
-      )
+          )
       }
     </div>
     <Notificacion mensaje={tipoNotificacion} clase={notificacionPersona}  />

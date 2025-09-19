@@ -2,9 +2,9 @@ export  interface ProductoType {
   id?: number;
   nombre:string;
   categoria:string;
-  precio:number;
+  precio:string;
   modelo:number;
-  kilometros:number;
+  kilometros:string;
   motor:string;
   version:string;
   combustible:string;
