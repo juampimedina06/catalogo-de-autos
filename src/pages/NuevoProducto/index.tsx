@@ -7,9 +7,9 @@ import Notificacion from "../../components/Notificacion/Notificacion";
 import { useState } from "react";
 
 
-
 const NuevoProducto = () => {
   const [mensaje, setMensaje] = useState<string | null>(null)
+  const [tipoClase, setTipoClase] = useState<string| null>(null)
 
   const {
     handleChange,
@@ -69,16 +69,20 @@ const NuevoProducto = () => {
       .then((respuesta) => {
         console.log("producto subido con exito", respuesta);
         setMensaje("Producto subido con exito")
+        setTipoClase("Correcta")
         setTimeout(() =>{
           setMensaje(null)
+          setTipoClase(null)
           window.location.href = "/Stock";
         },1000)
       })
       .catch((error) => {
         console.log("error al subir el producto", error);
         setMensaje("No se pudo subir el producto")
+        setTipoClase("Incorrecta")
         setTimeout(() =>{
           setMensaje(null)
+          setTipoClase(null)
         },1000)
       });
   };
@@ -106,7 +110,7 @@ const NuevoProducto = () => {
           caja={caja}
         />
       </div>
-      <Notificacion mensaje={mensaje} clase={mensaje ? "Correcta" : "incorrecta"} />
+      <Notificacion mensaje={mensaje} clase={tipoClase} />
     </section>
   );
 };

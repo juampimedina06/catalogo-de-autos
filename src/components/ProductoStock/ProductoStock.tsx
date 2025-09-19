@@ -90,6 +90,12 @@ const ProductoStock = ({filtrarProductos, actualizarProductoEstado,eliminarProdu
         eliminarProductoEstado((productosAnteriores) =>
         productosAnteriores.filter(p => p.id !== id)
         );
+        mensajeNotificacion("eliminado")  
+        tipoNotificacion("Producto eliminado correctamente")
+        setTimeout(() => {
+                mensajeNotificacion('')
+                tipoNotificacion(null)
+              }, 1000)
       })
         .catch(error =>{
           console.log("error al eliminar el producto",error)
