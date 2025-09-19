@@ -69,7 +69,7 @@ const NuevoProducto = () => {
       .then((respuesta) => {
         console.log("producto subido con exito", respuesta);
         setMensaje("Producto subido con exito")
-        setTipoClase("Correcta")
+        setTipoClase("correcta")
         setTimeout(() =>{
           setMensaje(null)
           setTipoClase(null)
@@ -79,7 +79,7 @@ const NuevoProducto = () => {
       .catch((error) => {
         console.log("error al subir el producto", error);
         setMensaje("No se pudo subir el producto")
-        setTipoClase("Incorrecta")
+        setTipoClase("incorrecta")
         setTimeout(() =>{
           setMensaje(null)
           setTipoClase(null)
