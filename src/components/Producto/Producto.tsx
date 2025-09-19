@@ -4,7 +4,7 @@ import { CardActionArea} from '@mui/material';
 interface PropsProducto{
   id:number;
   nombre:string;
-  precio:number;
+  precio:string;
   imagenes:string;
 }
 

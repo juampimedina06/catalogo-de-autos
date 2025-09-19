@@ -1,9 +1,6 @@
-import { useEffect, useState } from "react";
 import InputStock from "../FormularioStock/InputStock";
 import InputCategoria from "../InputCategoria/InputCategoria";
-import servicioProductos from "../../services/productos";
 import styles from "./FormularioNuevoProducto.module.css";
-import type { FormEvent } from "react";
 
 interface PropsFormularioNuevoProducto {
 onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -88,7 +85,7 @@ const FormularioNuevoProducto = ({
             name="precio"
             value={precio}
             onChange={onChange}
-            type="number"
+            type="text"
             placeholder="Precio del Auto"
             clase="producto"
           />
@@ -113,7 +110,7 @@ const FormularioNuevoProducto = ({
             name="kilometros"
             value={kilometros}
             onChange={onChange}
-            type="number"
+            type="text"
             placeholder="Kilometraje"
             clase="producto"
           />
