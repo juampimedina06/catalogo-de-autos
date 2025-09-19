@@ -16,9 +16,9 @@ const Notificacion = ({ mensaje, clase }:PropsNotificacion) => {
                 <p>{mensaje}</p>
                  {
                 clase === "correcta" ? (
-                    <img className={styles.okey} src="./img/okey.png" alt="" />
+                    <img className={styles.okey} src="img/okey.png" alt="" />
                 ) : clase === "incorrecta" ? (
-                    <img className={styles.okey} src="./img/incorrecto.png" alt="" />
+                    <img className={styles.okey} src="img/incorrecto.png" alt="" />
                 ) : null
             }
             </div>
