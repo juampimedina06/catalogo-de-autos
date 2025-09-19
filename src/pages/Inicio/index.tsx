@@ -8,6 +8,7 @@ import ElementoNoEncontrado from '../../components/ElementoNoEncontrado/Elemento
 import { Link } from 'react-router-dom';
 import servicioProducto from "../../services/productos"
 import { autosPage } from '../../types/autosType';
+import Banco from '../../components/Bancos/Bancos';
 
 const Inicio = () => {
   const [producto, setProducto] = useState<autosPage[]>([]);
@@ -44,6 +45,7 @@ const Inicio = () => {
             ))
           )}
         </div>
+        <Banco></Banco>
         </div>
         
       </section>
