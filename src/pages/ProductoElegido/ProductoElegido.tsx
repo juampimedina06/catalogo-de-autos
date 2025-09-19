@@ -53,19 +53,9 @@ const ProductoElegido = () => {
     if (productoElegido.cubiertas) {
       return <p className={styles.description}>4 cubiertas nuevas</p>;
     }
-    if(productoElegido.version){
-      return <p className={styles.description}>Version: {productoElegido.version}</p>
-    }
-    if(productoElegido.caja){
-      return <p className={styles.description}>{productoElegido.caja}</p> 
-    }
-    if(productoElegido.equipamiento){
-      return <p className={styles.description}>Equipamiento: {productoElegido.equipamiento}</p>
-    }
-    if(productoElegido.descripcion){
-      return <p className={styles.description}>{productoElegido.descripcion}</p>
-    }
   };
+
+  console.log(productoElegido)
 
   const mensajeWsp = `Hola leandro! Me interesa el auto: ${productoElegido.nombre}`;
   const linkWsp = `https://wa.me/543516598216?text=${encodeURIComponent(mensajeWsp)}`;
@@ -117,7 +107,11 @@ const ProductoElegido = () => {
             <p className={styles.description}>{productoElegido.nombre} modelo {productoElegido.modelo}. {productoElegido.kilometros} kilometros</p>
             <p className={styles.description}>Motor {productoElegido.motor}</p>
             <p className={styles.description}>Combustible {productoElegido.combustible}</p>
+            <p className={styles.description}>Version: {productoElegido.version}</p>
             {informacionAutos()}
+            <p className={styles.description}>{productoElegido.caja}</p> 
+            <p className={styles.description}>{productoElegido.descripcion}</p>
+            <p className={styles.description}>Equipamiento: {productoElegido.equipamiento}</p>
           </div>
         </div>
       </div>
