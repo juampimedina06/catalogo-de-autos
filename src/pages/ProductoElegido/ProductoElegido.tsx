@@ -58,7 +58,7 @@ const ProductoElegido = () => {
   console.log(productoElegido)
 
   const mensajeWsp = `Hola leandro! Me interesa el auto: ${productoElegido.nombre}`;
-  const linkWsp = `https://wa.me/543516598216?text=${encodeURIComponent(mensajeWsp)}`;
+  const linkWsp = `https://wa.me/5493513921220?text=${encodeURIComponent(mensajeWsp)}`;
 
   return (
     <div className={styles.pageWrapper}>
