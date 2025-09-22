@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 const BotonWasap = () => {
-    const [phone] = useState("5493511234567"); 
+    const [phone] = useState("5493513921220"); 
     const [message] = useState("Hola! Quisiera más info 😃");
 
     const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(
