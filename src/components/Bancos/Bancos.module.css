@@ -20,8 +20,9 @@
 
 .logo_item img {
   width: 160px;
-  height: auto;
-  transition: transform 0.3s ease;  
+  height: 75px;
+  transition: transform 0.3s ease;
+  object-fit: cover;
 }
 
 .logo_item img:hover {
