@@ -18,7 +18,7 @@ const Inicio = () => {
     servicioProducto
       .obtener()
       .then((response) => {
-        setProducto(response.slice(0, 9));
+        setProducto(response.slice(0, 3));
         setLoading(false);
       });
   }, []);
@@ -45,7 +45,21 @@ const Inicio = () => {
             ))
           )}
         </div>
+        </div>
         <Banco></Banco>
+        <div className={styles.contenido_producto}>
+          <Titulo titulo="Autos Destacados!" />
+        <div className={styles.producto}>
+          {producto.length === 0 ? (
+            <ElementoNoEncontrado tipoDato="Nombre" />
+          ) : (
+            producto.map((producto) => (
+              <Link to={`producto/${producto.id}`} key={producto.id}>
+                <Producto {...producto} />
+              </Link>
+            ))
+          )}
+        </div>
         </div>
         
       </section>

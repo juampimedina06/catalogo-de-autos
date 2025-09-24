@@ -40,8 +40,9 @@
     transform: translateX(-50%);
 }
 .logo {
-    height: 60px;
+    width:200px;
     cursor: pointer;
+    padding: 1rem;
 }
 
 .contenedor_admin{

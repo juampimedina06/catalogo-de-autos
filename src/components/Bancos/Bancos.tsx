@@ -1,3 +1,4 @@
+import Titulo from "../Titulo";
 import styles from "./Bancos.module.css";
 
 const bancos = [
@@ -13,14 +14,12 @@ const Banco = () => {
   return (
     <section className={styles.banco_section}> 
       <div className={styles.container}>
-        <h2 className={styles.titulo}>
-          El auto que queres, con la financiación que necesitas!
-        </h2>
+        <Titulo titulo="Financiación con los mejores bancos" />
 
         <div className={styles.logos_container}>
           {bancos.map((banco, index) => (
-            <div className={styles.logo_item} key={index}>
-              <img src={banco.src} alt={banco.alt} />
+            <div className={styles.logo_item} >
+              <img src={banco.src} alt={banco.alt} key={index}/>
             </div>
           ))}
         </div>
